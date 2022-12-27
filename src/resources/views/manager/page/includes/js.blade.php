@@ -1,0 +1,6 @@
+
+{{-- @stack('scripts') --}}
+
+@stack('bodyClass')
+
+

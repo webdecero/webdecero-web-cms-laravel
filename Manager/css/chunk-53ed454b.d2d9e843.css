@@ -1,0 +1,1 @@
+.hvr-grow-shadow{box-shadow:0 0 .1rem transparent;transition-duration:.2s;transition-property:box-shadow,transform}.hvr-grow-shadow:hover{box-shadow:.5rem .5rem .25rem rgba(0,0,0,.2);transform:scale(1.1)}.el-dialog__header{border-bottom:1px solid #dee2e6}.el-dialog__title{font-weight:700}.el-dialog__body{padding:0}

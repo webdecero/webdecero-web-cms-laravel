@@ -1,0 +1,42 @@
+{
+    "name": "webdecero/cms",
+    "description": "CMS",
+    "type": "library",
+    "keywords": ["webdecero", "cms", "laravel", "vue"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Uriel Acosta Hernández",
+            "email": "uriel@webdecero.com"
+        },
+        {
+            "name": "Mayer Abraham Pérez González",
+            "email": "mayer.perez16@gmail.com"
+        },
+        {
+            "name": "Omar Ramos Herrera",
+            "email": "omarramos755@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.2",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "laravel/framework": "^8",
+        "intervention/image": "^2.7",
+        "jenssegers/mongodb": "^3.8",
+        "laravel/passport": "^10.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Webdecero\\CMS\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Webdecero\\CMS\\Tests\\": "tests"
+        }
+    }
+}
