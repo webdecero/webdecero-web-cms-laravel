@@ -1,9 +1,9 @@
 <?php
 
-namespace Webdecero\CMS\Schemas;
+namespace Webdecero\Webcms\Schemas;
 
-use Webdecero\CMS\Schemas\BaseSchema;
-use Webdecero\CMS\Schemas\CustomFileSchema;
+use Webdecero\Webcms\Schemas\BaseSchema;
+use Webdecero\Webcms\Schemas\CustomFileSchema;
 
 class FrontEndFilesSchema extends BaseSchema
 {

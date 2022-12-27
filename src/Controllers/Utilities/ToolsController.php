@@ -1,15 +1,15 @@
 <?php
 
-namespace Webdecero\CMS\Controllers\Utilities;
+namespace Webdecero\Webcms\Controllers\Utilities;
 
 use Exception;
 use Throwable;
 use Validator;
-use Webdecero\CMS\Disk\DynamicDisk;
+use Webdecero\Webcms\Disk\DynamicDisk;
 use Illuminate\Http\Request;
-use Webdecero\CMS\Traits\ResponseApi;
+use Webdecero\Webcms\Traits\ResponseApi;
 use Illuminate\Support\Facades\Log;
-use Webdecero\CMS\Controllers\Controller;
+use Webdecero\Webcms\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class ToolsController extends Controller
@@ -66,7 +66,7 @@ class ToolsController extends Controller
     {
         $objectSTD =  (object)$array;
 
-        return $this->_cast($objectSTD, 'Webdecero\CMS\Schemas\FrontEndFilesSchema');
+        return $this->_cast($objectSTD, 'Webdecero\Webcms\Schemas\FrontEndFilesSchema');
     }
 
     //Cast std class to specific class

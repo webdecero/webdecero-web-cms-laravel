@@ -1,15 +1,15 @@
 <?php
 
-namespace Webdecero\CMS\Controllers\Utilities;
+namespace Webdecero\Webcms\Controllers\Utilities;
 
 use Exception;
 use Throwable;
 use Validator;
 use ZipArchive;
 use Illuminate\Http\Request;
-use Webdecero\CMS\Traits\ResponseApi;
+use Webdecero\Webcms\Traits\ResponseApi;
 use Illuminate\Support\Facades\Log;
-use Webdecero\CMS\Controllers\Controller;
+use Webdecero\Webcms\Controllers\Controller;
 
 class AssetsController extends Controller
 {

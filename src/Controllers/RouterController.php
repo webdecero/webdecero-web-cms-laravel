@@ -1,16 +1,16 @@
 <?php
 
-namespace Webdecero\CMS\Controllers;
+namespace Webdecero\Webcms\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
-use Webdecero\CMS\Models\Site\Site;
+use Webdecero\Webcms\Models\Site\Site;
 use Illuminate\Support\Facades\Log;
-use Webdecero\CMS\Models\Pages\Page;
-use Webdecero\CMS\Traits\ResponseApi;
-use Webdecero\CMS\Models\SiteMap\SiteMap;
-use Webdecero\CMS\Controllers\Controller;
-use Webdecero\CMS\Models\Templates\Template;
+use Webdecero\Webcms\Models\Pages\Page;
+use Webdecero\Webcms\Traits\ResponseApi;
+use Webdecero\Webcms\Models\SiteMap\SiteMap;
+use Webdecero\Webcms\Controllers\Controller;
+use Webdecero\Webcms\Models\Templates\Template;
 
 class RouterController extends Controller
 {

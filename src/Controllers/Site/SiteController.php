@@ -1,20 +1,20 @@
 <?php
 
-namespace Webdecero\CMS\Controllers\Site;
+namespace Webdecero\Webcms\Controllers\Site;
 
 use Exception;
 use Throwable;
 use Validator;
-use Webdecero\CMS\Models\Site\Seo;
-use Webdecero\CMS\Models\Site\Site;
-use Webdecero\CMS\Schemas\SeoSchema;
+use Webdecero\Webcms\Models\Site\Seo;
+use Webdecero\Webcms\Models\Site\Site;
+use Webdecero\Webcms\Schemas\SeoSchema;
 use Illuminate\Http\Request;
-use Webdecero\CMS\Models\Site\Settings;
-use Webdecero\CMS\Traits\ResponseApi;
+use Webdecero\Webcms\Models\Site\Settings;
+use Webdecero\Webcms\Traits\ResponseApi;
 use Illuminate\Support\Facades\Log;
-use Webdecero\CMS\Schemas\FrontEndFilesSchema;
-use Webdecero\CMS\Controllers\Controller;
-use Webdecero\CMS\Controllers\Utilities\ToolsController;
+use Webdecero\Webcms\Schemas\FrontEndFilesSchema;
+use Webdecero\Webcms\Controllers\Controller;
+use Webdecero\Webcms\Controllers\Utilities\ToolsController;
 
 class SiteController extends Controller
 {

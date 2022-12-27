@@ -1,6 +1,6 @@
 <?php
 
-namespace Webdecero\CMS\Models;
+namespace Webdecero\Webcms\Models;
 
 // use Laravel\Sanctum\HasApiTokens;
 

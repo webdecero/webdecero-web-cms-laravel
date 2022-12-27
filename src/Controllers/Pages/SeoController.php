@@ -1,16 +1,16 @@
 <?php
 
-namespace Webdecero\CMS\Controllers\Pages;
+namespace Webdecero\Webcms\Controllers\Pages;
 
 use Exception;
 use Throwable;
 use Validator;
-use Webdecero\CMS\Schemas\SeoSchema;
-use Webdecero\CMS\Models\Pages\Page;
+use Webdecero\Webcms\Schemas\SeoSchema;
+use Webdecero\Webcms\Models\Pages\Page;
 use Illuminate\Http\Request;
-use Webdecero\CMS\Traits\ResponseApi;
+use Webdecero\Webcms\Traits\ResponseApi;
 use Illuminate\Support\Facades\Log;
-use Webdecero\CMS\Controllers\Controller;
+use Webdecero\Webcms\Controllers\Controller;
 
 class SeoController extends Controller
 {

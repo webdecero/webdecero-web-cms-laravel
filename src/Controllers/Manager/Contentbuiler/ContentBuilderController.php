@@ -1,15 +1,15 @@
 <?php
 
-namespace Webdecero\CMS\Controllers\Manager\Contentbuiler;
+namespace Webdecero\Webcms\Controllers\Manager\Contentbuiler;
 
 
 // use Illuminate\Http\Request;
-use Webdecero\CMS\Models\Site\Site;
-use Webdecero\CMS\Models\Templates\Template;
-use Webdecero\CMS\Models\Pages\Page;
-use Webdecero\CMS\Models\SiteMap\SiteMap;
-use Webdecero\CMS\Traits\ResponseApi;
-use Webdecero\CMS\Controllers\Controller;
+use Webdecero\Webcms\Models\Site\Site;
+use Webdecero\Webcms\Models\Templates\Template;
+use Webdecero\Webcms\Models\Pages\Page;
+use Webdecero\Webcms\Models\SiteMap\SiteMap;
+use Webdecero\Webcms\Traits\ResponseApi;
+use Webdecero\Webcms\Controllers\Controller;
 
 class ContentBuilderController extends Controller
 {

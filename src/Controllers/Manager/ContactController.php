@@ -1,13 +1,13 @@
 <?php
 
-namespace Webdecero\CMS\Controllers\Manager;
+namespace Webdecero\Webcms\Controllers\Manager;
 
 use Carbon\Carbon;
-use Webdecero\CMS\Models\Contact;
+use Webdecero\Webcms\Models\Contact;
 use Illuminate\Http\Request;
 use MongoDB\BSON\UTCDateTime;
-use Webdecero\CMS\Traits\ResponseApi;
-use Webdecero\CMS\Controllers\Controller;
+use Webdecero\Webcms\Traits\ResponseApi;
+use Webdecero\Webcms\Controllers\Controller;
 
 class ContactController extends Controller
 {

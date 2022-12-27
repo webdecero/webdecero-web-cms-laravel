@@ -2,49 +2,49 @@
 
 
 use Illuminate\Support\Facades\Route;
-use Webdecero\CMS\Controllers\Site\SiteController;
-use Webdecero\CMS\Controllers\Pages\PagesController;
-use Webdecero\CMS\Controllers\Images\ImagesController;
-use Webdecero\CMS\Controllers\Manager\AdminController;
+use Webdecero\Webcms\Controllers\Site\SiteController;
+use Webdecero\Webcms\Controllers\Pages\PagesController;
+use Webdecero\Webcms\Controllers\Images\ImagesController;
+use Webdecero\Webcms\Controllers\Manager\AdminController;
 
-use Webdecero\CMS\Controllers\Manager\LoginController;
+use Webdecero\Webcms\Controllers\Manager\LoginController;
 
-use Webdecero\CMS\Controllers\Manager\ContactController;
-use Webdecero\CMS\Controllers\SiteMap\SiteMapController;
-use Webdecero\CMS\Controllers\Utilities\FilesController;
-use Webdecero\CMS\Controllers\Settings\SideBarController;
-use Webdecero\CMS\Controllers\Settings\SettingsController;
-use Webdecero\CMS\Controllers\Templates\TemplatesController;
-use Webdecero\CMS\Controllers\Pages\Editor\EditorPagesController;
-use Webdecero\CMS\Controllers\Utilities\ConfigurationsController;
-use Webdecero\CMS\Controllers\Site\CssController as CssSController;
-use Webdecero\CMS\Controllers\Site\SeoController as SeoSController;
+use Webdecero\Webcms\Controllers\Manager\ContactController;
+use Webdecero\Webcms\Controllers\SiteMap\SiteMapController;
+use Webdecero\Webcms\Controllers\Utilities\FilesController;
+use Webdecero\Webcms\Controllers\Settings\SideBarController;
+use Webdecero\Webcms\Controllers\Settings\SettingsController;
+use Webdecero\Webcms\Controllers\Templates\TemplatesController;
+use Webdecero\Webcms\Controllers\Pages\Editor\EditorPagesController;
+use Webdecero\Webcms\Controllers\Utilities\ConfigurationsController;
+use Webdecero\Webcms\Controllers\Site\CssController as CssSController;
+use Webdecero\Webcms\Controllers\Site\SeoController as SeoSController;
 
-use Webdecero\CMS\Controllers\Pages\CssController as CssPController;
-use Webdecero\CMS\Controllers\Pages\SeoController as SeoPController;
-use Webdecero\CMS\Controllers\Templates\CssController as CssTController;
-use Webdecero\CMS\Controllers\Site\JavaScriptController as JsSController;
-use Webdecero\CMS\Controllers\Templates\Editor\EditorTemplatesController;
-use Webdecero\CMS\Controllers\Pages\JavaScriptController as JsPController;
-use Webdecero\CMS\Controllers\Settings\LoginController as LoginSController;
+use Webdecero\Webcms\Controllers\Pages\CssController as CssPController;
+use Webdecero\Webcms\Controllers\Pages\SeoController as SeoPController;
+use Webdecero\Webcms\Controllers\Templates\CssController as CssTController;
+use Webdecero\Webcms\Controllers\Site\JavaScriptController as JsSController;
+use Webdecero\Webcms\Controllers\Templates\Editor\EditorTemplatesController;
+use Webdecero\Webcms\Controllers\Pages\JavaScriptController as JsPController;
+use Webdecero\Webcms\Controllers\Settings\LoginController as LoginSController;
 
-use Webdecero\CMS\Controllers\Site\CssFilesController as CssFilesSController;
-use Webdecero\CMS\Controllers\Site\SettingsController as SettingsSController;
-use Webdecero\CMS\Controllers\Pages\CssFilesController as CssFilesPController;
-use Webdecero\CMS\Controllers\Templates\JavaScriptController as JsTController;
-use Webdecero\CMS\Controllers\Site\CssCustomController as CssCustomSController;
-use Webdecero\CMS\Controllers\Pages\CssCustomController as CssCustomPController;
-use Webdecero\CMS\Controllers\Templates\CssFilesController as CssFilesTController;
-use Webdecero\CMS\Controllers\Templates\SettingsController as SettingsTController;
+use Webdecero\Webcms\Controllers\Site\CssFilesController as CssFilesSController;
+use Webdecero\Webcms\Controllers\Site\SettingsController as SettingsSController;
+use Webdecero\Webcms\Controllers\Pages\CssFilesController as CssFilesPController;
+use Webdecero\Webcms\Controllers\Templates\JavaScriptController as JsTController;
+use Webdecero\Webcms\Controllers\Site\CssCustomController as CssCustomSController;
+use Webdecero\Webcms\Controllers\Pages\CssCustomController as CssCustomPController;
+use Webdecero\Webcms\Controllers\Templates\CssFilesController as CssFilesTController;
+use Webdecero\Webcms\Controllers\Templates\SettingsController as SettingsTController;
 
-use Webdecero\CMS\Controllers\Site\JavaScriptFilesController as JsFilesSController;
-use Webdecero\CMS\Controllers\Pages\JavaScriptFilesController as JsFilesPController;
+use Webdecero\Webcms\Controllers\Site\JavaScriptFilesController as JsFilesSController;
+use Webdecero\Webcms\Controllers\Pages\JavaScriptFilesController as JsFilesPController;
 
-use Webdecero\CMS\Controllers\Templates\CssCustomController as CssCustomTController;
-use Webdecero\CMS\Controllers\Site\JavaScriptCustomController as JsCustomSController;
-use Webdecero\CMS\Controllers\Pages\JavaScriptCustomController as JsCustomPController;
-use Webdecero\CMS\Controllers\Templates\JavaScriptFilesController as JsFilesTController;
-use Webdecero\CMS\Controllers\Templates\JavaScriptCustomController as JsCustomTController;
+use Webdecero\Webcms\Controllers\Templates\CssCustomController as CssCustomTController;
+use Webdecero\Webcms\Controllers\Site\JavaScriptCustomController as JsCustomSController;
+use Webdecero\Webcms\Controllers\Pages\JavaScriptCustomController as JsCustomPController;
+use Webdecero\Webcms\Controllers\Templates\JavaScriptFilesController as JsFilesTController;
+use Webdecero\Webcms\Controllers\Templates\JavaScriptCustomController as JsCustomTController;
 /*
 |--------------------------------------------------------------------------
 | API Routes

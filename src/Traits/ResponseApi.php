@@ -1,6 +1,6 @@
 <?php
 
-namespace Webdecero\CMS\Traits;
+namespace Webdecero\Webcms\Traits;
 
 trait ResponseApi
 {

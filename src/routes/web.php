@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Webdecero\CMS\Controllers\MailController;
-use Webdecero\CMS\Controllers\RouterController;
-use Webdecero\CMS\Controllers\Manager\ManagerController;
-use Webdecero\CMS\Controllers\Manager\Contentbuiler\ContentBuilderController;
+use Webdecero\Webcms\Controllers\MailController;
+use Webdecero\Webcms\Controllers\RouterController;
+use Webdecero\Webcms\Controllers\Manager\ManagerController;
+use Webdecero\Webcms\Controllers\Manager\Contentbuiler\ContentBuilderController;
 
 /*
 |--------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webdecero\CMS\Disk;
+namespace Webdecero\Webcms\Disk;
 
 use Illuminate\Support\Facades\Storage;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Webdecero\CMS\Controllers;
+namespace Webdecero\Webcms\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;

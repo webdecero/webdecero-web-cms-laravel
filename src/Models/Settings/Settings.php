@@ -1,6 +1,6 @@
 <?php
 
-namespace Webdecero\CMS\Models\Settings;
+namespace Webdecero\Webcms\Models\Settings;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Jenssegers\Mongodb\Eloquent\Model;

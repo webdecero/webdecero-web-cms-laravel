@@ -1,16 +1,16 @@
 <?php
 
-namespace Webdecero\CMS\Controllers\SiteMap;
+namespace Webdecero\Webcms\Controllers\SiteMap;
 
 use Exception;
 use Throwable;
 use Validator;
-use Webdecero\CMS\Models\SiteMap\SiteMap;
+use Webdecero\Webcms\Models\SiteMap\SiteMap;
 use Illuminate\Http\Request;
-use Webdecero\CMS\Traits\ResponseApi;
+use Webdecero\Webcms\Traits\ResponseApi;
 use Illuminate\Support\Facades\Log;
-use Webdecero\CMS\Controllers\Controller;
-use Webdecero\CMS\Controllers\Utilities\ToolsController;
+use Webdecero\Webcms\Controllers\Controller;
+use Webdecero\Webcms\Controllers\Utilities\ToolsController;
 
 class SiteMapController extends Controller
 {

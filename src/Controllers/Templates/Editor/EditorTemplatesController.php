@@ -1,16 +1,16 @@
 <?php
 
-namespace Webdecero\CMS\Controllers\Templates\Editor;
+namespace Webdecero\Webcms\Controllers\Templates\Editor;
 
 use Exception;
 use Throwable;
 use Validator;
-use Webdecero\CMS\Schemas\FileSchema;
+use Webdecero\Webcms\Schemas\FileSchema;
 use Illuminate\Http\Request;
-use Webdecero\CMS\Traits\ResponseApi;
-use Webdecero\CMS\Models\Templates\Template;
+use Webdecero\Webcms\Traits\ResponseApi;
+use Webdecero\Webcms\Models\Templates\Template;
 use Illuminate\Support\Facades\Log;
-use Webdecero\CMS\Controllers\Controller;
+use Webdecero\Webcms\Controllers\Controller;
 
 class EditorTemplatesController extends Controller
 {

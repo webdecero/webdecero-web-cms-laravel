@@ -1,13 +1,13 @@
 <?php
 
-namespace Webdecero\CMS\Controllers;
+namespace Webdecero\Webcms\Controllers;
 
 use Exception;
 use Validator;
-use Webdecero\CMS\Models\Contact;
+use Webdecero\Webcms\Models\Contact;
 use Illuminate\Http\Request;
-use Webdecero\CMS\Traits\ResponseApi;
-use Webdecero\CMS\Mail\ContactNotification;
+use Webdecero\Webcms\Traits\ResponseApi;
+use Webdecero\Webcms\Mail\ContactNotification;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 

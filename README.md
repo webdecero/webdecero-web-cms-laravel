@@ -28,13 +28,13 @@ Make sure you have the MongoDB PHP driver installed. You can find installation i
 Installation using composer:
 
 ```
-composer require webdecero/webcms
+composer require webdecero/web-cms
 ```
 
 Add the service provider to `config/app.php`:
 
 ```php
-Webdecero\WEBCMS\ServiceProvider::class,
+Webdecero\Webcms\CMSServiceProvider::class,
 ```
 
 ## Configuration
@@ -123,7 +123,7 @@ Change your default database connection name in `config/auth.php`:
         ],
         'admin' => [
             'driver' => 'eloquent',
-            'model' => Webdecero\WEBCMS\Manager\Models\Admin::class,
+            'model' => Webdecero\Webcms\Models\Admin::class,
         ],
     ],
 ```

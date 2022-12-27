@@ -1,6 +1,6 @@
 <?php
 
-namespace Webdecero\CMS\Models\Passport;
+namespace Webdecero\Webcms\Models\Passport;
 
 use Carbon\Carbon;
 use Laravel\Passport\Passport;

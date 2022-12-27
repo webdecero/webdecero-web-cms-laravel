@@ -1,16 +1,16 @@
 <?php
 
-namespace Webdecero\CMS\Controllers\Site;
+namespace Webdecero\Webcms\Controllers\Site;
 
 use Exception;
 use Throwable;
 use Validator;
-use Webdecero\CMS\Models\Site\Site;
+use Webdecero\Webcms\Models\Site\Site;
 use Illuminate\Http\Request;
-use Webdecero\CMS\Traits\ResponseApi;
+use Webdecero\Webcms\Traits\ResponseApi;
 use Illuminate\Support\Facades\Log;
-use Webdecero\CMS\Controllers\Controller;
-use Webdecero\CMS\Controllers\Utilities\ToolsController;
+use Webdecero\Webcms\Controllers\Controller;
+use Webdecero\Webcms\Controllers\Utilities\ToolsController;
 
 class JavaScriptCustomController extends Controller
 {

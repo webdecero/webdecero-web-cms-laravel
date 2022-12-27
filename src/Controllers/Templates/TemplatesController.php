@@ -1,6 +1,6 @@
 <?php
 
-namespace Webdecero\CMS\Controllers\Templates;
+namespace Webdecero\Webcms\Controllers\Templates;
 
 use Exception;
 use Throwable;
@@ -8,12 +8,12 @@ use Validator;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use MongoDB\BSON\UTCDateTime;
-use Webdecero\CMS\Traits\ResponseApi;
-use Webdecero\CMS\Models\Templates\Template;
+use Webdecero\Webcms\Traits\ResponseApi;
+use Webdecero\Webcms\Models\Templates\Template;
 use Illuminate\Support\Facades\Log;
-use Webdecero\CMS\Schemas\FrontEndFilesSchema;
-use Webdecero\CMS\Controllers\Controller;
-use Webdecero\CMS\Controllers\Utilities\ToolsController;
+use Webdecero\Webcms\Schemas\FrontEndFilesSchema;
+use Webdecero\Webcms\Controllers\Controller;
+use Webdecero\Webcms\Controllers\Utilities\ToolsController;
 
 class TemplatesController extends Controller
 {

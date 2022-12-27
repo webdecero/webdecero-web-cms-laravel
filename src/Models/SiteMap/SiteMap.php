@@ -1,6 +1,6 @@
 <?php
 
-namespace Webdecero\CMS\Models\SiteMap;
+namespace Webdecero\Webcms\Models\SiteMap;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Jenssegers\Mongodb\Eloquent\Model;

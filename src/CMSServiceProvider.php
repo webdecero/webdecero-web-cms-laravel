@@ -1,6 +1,6 @@
 <?php
 
-namespace Webdecero\CMS;
+namespace Webdecero\Webcms;
 
 use RuntimeException;
 use Illuminate\Support\Facades\Log;
@@ -44,7 +44,7 @@ class CMSServiceProvider extends ServiceProvider {
     private function bootConfig() {
 
 //        Publishes Configuración CMS
-//        php artisan vendor:publish --provider="Webdecero\CMS\CMSServiceProvider" --tag=config
+//        php artisan vendor:publish --provider="Webdecero\Webcms\CMSServiceProvider" --tag=config
 
         $this->publishes([
             $this->configCMS => config_path('webdecero/cms/config.php')

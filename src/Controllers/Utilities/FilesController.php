@@ -1,17 +1,17 @@
 <?php
 
-namespace Webdecero\CMS\Controllers\Utilities;
+namespace Webdecero\Webcms\Controllers\Utilities;
 
 use Exception;
 use Throwable;
 use Validator;
-use Webdecero\CMS\Disk\DynamicDisk;
+use Webdecero\Webcms\Disk\DynamicDisk;
 use Illuminate\Http\Request;
-use Webdecero\CMS\Traits\ResponseApi;
+use Webdecero\Webcms\Traits\ResponseApi;
 use Illuminate\Support\Facades\Log;
-use Webdecero\CMS\Controllers\Controller;
+use Webdecero\Webcms\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use Webdecero\CMS\Controllers\Utilities\ToolsController;
+use Webdecero\Webcms\Controllers\Utilities\ToolsController;
 
 class FilesController extends Controller
 {

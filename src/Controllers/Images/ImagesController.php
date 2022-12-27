@@ -1,6 +1,6 @@
 <?php
 
-namespace Webdecero\CMS\Controllers\Images;
+namespace Webdecero\Webcms\Controllers\Images;
 
 //Providers
 
@@ -9,15 +9,15 @@ namespace Webdecero\CMS\Controllers\Images;
 
 // use Illuminate\Filesystem\Filesystem;
 use Validator;
-use Webdecero\CMS\Models\Image;
+use Webdecero\Webcms\Models\Image;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Log;
-use Webdecero\CMS\Disk\DynamicDisk;
+use Webdecero\Webcms\Disk\DynamicDisk;
 use Illuminate\Support\Facades\Storage;
-use Webdecero\CMS\Controllers\Utilities\ToolsController;
-use Webdecero\CMS\Controllers\Manager\ManagerController;
+use Webdecero\Webcms\Controllers\Utilities\ToolsController;
+use Webdecero\Webcms\Controllers\Manager\ManagerController;
 use Intervention\Image\Facades\Image as InterventionImage;
 
 

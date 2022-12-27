@@ -1,6 +1,6 @@
 <?php
 
-namespace Webdecero\CMS\Schemas;
+namespace Webdecero\Webcms\Schemas;
 
 
 class BaseSchema 

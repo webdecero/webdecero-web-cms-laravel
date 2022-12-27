@@ -31,12 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Webdecero\\CMS\\": "src"
+            "Webdecero\\Webcms\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Webdecero\\CMS\\Tests\\": "tests"
+            "Webdecero\\Webcms\\Tests\\": "tests"
         }
     }
 }

@@ -1,16 +1,16 @@
 <?php
 
-namespace Webdecero\CMS\Controllers\Settings;
+namespace Webdecero\Webcms\Controllers\Settings;
 
 use Exception;
 use Throwable;
 use Validator;
 use Illuminate\Http\Request;
-use Webdecero\CMS\Schemas\IdentitySchema;
-use Webdecero\CMS\Traits\ResponseApi;
-use Webdecero\CMS\Models\Settings\Settings;
+use Webdecero\Webcms\Schemas\IdentitySchema;
+use Webdecero\Webcms\Traits\ResponseApi;
+use Webdecero\Webcms\Models\Settings\Settings;
 use Illuminate\Support\Facades\Log;
-use Webdecero\CMS\Controllers\Controller;
+use Webdecero\Webcms\Controllers\Controller;
 
 class LoginController extends Controller
 {

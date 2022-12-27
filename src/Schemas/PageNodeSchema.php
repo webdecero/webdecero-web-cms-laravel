@@ -1,8 +1,8 @@
 <?php
 
-namespace Webdecero\CMS\Schemas;
+namespace Webdecero\Webcms\Schemas;
 
-use Webdecero\CMS\Schemas\BaseSchema;
+use Webdecero\Webcms\Schemas\BaseSchema;
 
 class PageNodeSchema extends BaseSchema
 {

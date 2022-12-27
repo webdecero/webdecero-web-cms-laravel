@@ -1,21 +1,21 @@
 <?php
 
 
-namespace Webdecero\CMS\Controllers\Manager;
+namespace Webdecero\Webcms\Controllers\Manager;
 
 //Facades
 use Carbon\Carbon;
-use Webdecero\CMS\Models\Admin;
+use Webdecero\Webcms\Models\Admin;
 //Models
 use Illuminate\Http\Request;
 
-use Webdecero\CMS\Traits\ResponseApi;
+use Webdecero\Webcms\Traits\ResponseApi;
 //Class
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Webdecero\CMS\Controllers\Manager\ManagerController;
+use Webdecero\Webcms\Controllers\Manager\ManagerController;
 
 class LoginController extends ManagerController
 {

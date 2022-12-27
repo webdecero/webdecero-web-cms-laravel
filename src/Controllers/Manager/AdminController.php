@@ -1,17 +1,17 @@
 <?php
 
 
-namespace Webdecero\CMS\Controllers\Manager;
+namespace Webdecero\Webcms\Controllers\Manager;
 
 // use Exception;
 
 use Exception;
 //Class
 use Throwable;
-use Webdecero\CMS\Models\Admin;
+use Webdecero\Webcms\Models\Admin;
 use Illuminate\Http\Request;
 // use Illuminate\Support\Facades\Hash;
-use Webdecero\CMS\Traits\ResponseApi;
+use Webdecero\Webcms\Traits\ResponseApi;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
