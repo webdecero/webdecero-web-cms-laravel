@@ -6,6 +6,7 @@ use RuntimeException;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Webdecero\Webcms\Console\Commands\SetupAdmin;
 
 //use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -28,6 +29,7 @@ class CMSServiceProvider extends ServiceProvider {
         $this->bootRoutes();
         $this->bootAssets();
         $this->bootPages();
+        $this->bootCommands();
     }
 
     /**
@@ -39,6 +41,16 @@ class CMSServiceProvider extends ServiceProvider {
 
         $this->mergeConfigFrom($this->configCMS, 'webdecero/cms/config.php');
 
+    }
+
+    private function bootCommands() {
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                SetupAdmin::class,
+            ]);
+        }
+    
     }
 
     private function bootConfig() {

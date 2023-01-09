@@ -1,5 +1,5 @@
 {
-    "name": "webdecero/web-cms",
+    "name": "webdecero/Webcms",
     "description": "CMS",
     "type": "library",
     "keywords": ["webdecero", "cms", "laravel", "vue"],
