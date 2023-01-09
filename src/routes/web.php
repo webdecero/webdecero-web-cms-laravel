@@ -22,8 +22,8 @@ use Webdecero\Webcms\Controllers\Manager\Contentbuiler\ContentBuilderController;
 // Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => ['web','setGuard:web','localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
 
 Route::middleware('web')->group(function () {
+    Route::get('manager-cms', [ManagerController::class, 'home'])->name('manage.home');
     Route::prefix('manager')->group(function () {
-        Route::get('/cms', [ManagerController::class, 'home'])->name('manage.home');
         Route::get('/editor/header/{keyName}', [ContentBuilderController::class, 'viewEditorHeader'])->name('manage.editor.header');
         Route::get('/editor/template/{keyName}', [ContentBuilderController::class, 'viewEditorMain'])->name('manage.editor.template');
         Route::get('/editor/footer/{keyName}', [ContentBuilderController::class, 'viewEditorFooter'])->name('manage.editor.footer');

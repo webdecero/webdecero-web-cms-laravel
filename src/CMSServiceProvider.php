@@ -6,7 +6,7 @@ use RuntimeException;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Webdecero\Webcms\Console\Commands\SetupAdmin;
+use Webdecero\Webcms\Commands\SetupAdmin;
 
 //use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 

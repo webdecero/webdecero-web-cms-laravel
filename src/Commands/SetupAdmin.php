@@ -1,6 +1,6 @@
 <?php
 
-namespace Webdecero\Webcms\Console\Commands;
+namespace Webdecero\Webcms\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Validator;
