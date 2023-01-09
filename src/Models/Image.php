@@ -12,7 +12,7 @@ class Image extends Model
      *
      * @var string
      */
-    protected $collection = 'images';
+    protected $collection = 'webcms_images';
 
     /**
      * The attributes that are mass assignable.

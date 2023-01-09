@@ -6,7 +6,16 @@ use RuntimeException;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+
+use Laravel\Passport\Passport;
+
 use Webdecero\Webcms\Commands\SetupAdmin;
+use Webdecero\Webcms\Models\Passport\AuthCode;
+use Webdecero\Webcms\Models\Passport\Client;
+use Webdecero\Webcms\Models\Passport\PersonalAccessClient;
+use Webdecero\Webcms\Models\Passport\Token;
+use Webdecero\Webcms\Models\Passport\TokenRepository;
+use Webdecero\Webcms\Models\Passport\ClientCommand;
 
 //use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -30,6 +39,19 @@ class CMSServiceProvider extends ServiceProvider {
         $this->bootAssets();
         $this->bootPages();
         $this->bootCommands();
+
+        //Passport::routes();
+
+        Passport::tokensCan([
+            'admin' => 'Acceso limitado a todas las funciones',
+        ]);
+
+        Passport::useTokenModel(Token::class);
+        Passport::useClientModel(Client::class);
+        Passport::useAuthCodeModel(AuthCode::class);
+        Passport::usePersonalAccessClientModel(PersonalAccessClient::class);
+        Passport::personalAccessTokensExpireIn(now()->addWeeks(1));
+
     }
 
     /**
@@ -41,6 +63,11 @@ class CMSServiceProvider extends ServiceProvider {
 
         $this->mergeConfigFrom($this->configCMS, 'webdecero/cms/config.php');
 
+        Passport::ignoreMigrations();
+
+        $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+        $loader->alias('Laravel\Passport\TokenRepository', TokenRepository::class);
+        $loader->alias('Laravel\Passport\Console\ClientCommand', ClientCommand::class);
     }
 
     private function bootCommands() {
@@ -68,13 +95,6 @@ class CMSServiceProvider extends ServiceProvider {
         $this->loadRoutesFrom(__DIR__ . '/routes/api-manager.php');
 
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
-
-        /*$config['namespace'] = 'Webdecero\Conekta\Pages\Controllers';
-
-
-        Route::group($config, function () {
-            $this->loadRoutesFrom(__DIR__ . '/routes/conekta.php');
-        });*/
         
     }
 

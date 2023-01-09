@@ -12,6 +12,8 @@ class Page extends Model
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
+    protected $collection = 'webcms_pages';
+
     /**
      * The attributes that are mass assignable.
      *

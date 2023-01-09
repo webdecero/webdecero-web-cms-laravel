@@ -12,6 +12,8 @@ class SiteMap extends Model
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
+    protected $collection = 'webcms_sitemaps';
+
     /**
      * The attributes that are mass assignable.
      *

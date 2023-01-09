@@ -29,7 +29,7 @@ class Admin extends Authenticatable
     protected $dates = ['deleted_at'];
 
 
-    protected $collection = 'admin';
+    protected $collection = 'webcms_admin';
 
     const STATUS_TRUE = true;
     const STATUS_FALSE = true;

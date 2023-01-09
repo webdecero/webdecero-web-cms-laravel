@@ -12,6 +12,8 @@ class Settings extends Model
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
+    protected $collection = 'webcms_settings';
+
     /**
      * The attributes that are mass assignable.
      *

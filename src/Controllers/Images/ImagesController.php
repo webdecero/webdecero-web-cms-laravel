@@ -23,12 +23,50 @@ use Intervention\Image\Facades\Image as InterventionImage;
 
 class ImagesController extends ManagerController
 {
-    public function index(Request $request)
+    public function search(Request $request)
     {
         try {
-            
-            $images = Image::all();
-            
+            $paginate = (int)$request->get('item', 25);
+
+            $query = $request->input('query', null);
+            $initDate = $request->input('initDate', null);
+            $endDate = $request->input('endDate', null);
+
+            $queryMongo = [];
+
+            if (!empty($query)) {
+
+                $queryMongo['$or'] = [
+                    [
+                        "name" => ['$regex' => "$query", '$options' => 'i']
+                    ]
+                ];
+            }
+            if (!empty($initDate)) {
+
+
+                $queryMongo['$and'][]
+                    = [
+                        'created_at' => [
+                            '$gte' => new UTCDateTime(new Carbon($initDate)),
+                        ]
+                    ];
+            }
+            if (!empty($endDate)) {
+
+                $queryMongo['$and'][]
+                    = [
+                        'created_at' => [
+                            '$lt' => new UTCDateTime(Carbon::parse($endDate)->addHour(23)),
+                        ]
+                    ];
+            }
+
+            if (!empty($queryMongo)) {
+                $images = Image::whereRaw($queryMongo)->orderBy('_id', 'desc')->paginate($paginate);
+            } else {
+                $images = Image::orderBy('_id', 'desc')->paginate($paginate);
+            }
             return $this->sendResponse($images, 'Images');
         } catch (Exception $th) {
 
@@ -59,8 +97,8 @@ class ImagesController extends ManagerController
 
             $tools = resolve(ToolsController::class);
             
-            $tools->removeFile($image->path);
-            $tools->removeFile($image->pathThumb);
+            $tools->removeFile($image->pathFile);
+            $tools->removeFile($image->thumbPathFile);
             $image->delete();
             
             return $this->sendResponse($image, 'Image eliminada');
@@ -84,9 +122,6 @@ class ImagesController extends ManagerController
                 'alt' => 'required|string',
                 'title' => 'required|string',
                 'extension' => 'required|string',
-                'width' => 'required|numeric',
-                'height' => 'required|numeric',
-                'size' => 'required|numeric',
                 'orientation' => 'required|string',
                 'format' => 'required|string',
                 'isPublic' => 'required|boolean'
@@ -102,6 +137,8 @@ class ImagesController extends ManagerController
 
 
             $img = InterventionImage::make($input['image']);
+            $input['width'] = $img->width();
+            $input['height'] = $img->height();
 
             $img = $this->_getImageResize($img, $input['resize'], $input['width'], $input['height']);
 
@@ -140,8 +177,13 @@ class ImagesController extends ManagerController
             }
 
             if (!$isSave) throw new Exception('Error al guardar imagen', 500);
+            
+            $input['size'] = filesize($path);
 
-            $image = new Image();
+            $image = Image::where('originalName', $input['originalName'])->first();
+            
+            if(empty($image)) $image = new Image();
+            
             $image->fill($input);
             $image->pathFile = $path;
             $image->thumbPathFile = $pathThumb;
@@ -302,8 +344,7 @@ class ImagesController extends ManagerController
         try {
 
             $img = InterventionImage::make($input['image']);
-            $input['size'] = $img->filesize();
-
+            
             if ($input['resize'] != false)
                 $img = $this->_getImageResize($img, $input['resize'], $input['width'], $input['height']);
 
@@ -351,8 +392,13 @@ class ImagesController extends ManagerController
             }
 
             if (!$isSave) throw new Exception('Error al guardar imagen', 500);
+            
+            $input['size'] = filesize($path);
 
-            $image = new Image();
+            $image = Image::where('originalName', $input['originalName'])->first();
+            
+            if(empty($image)) $image = new Image();
+
             $image->fill($input);
             $image->pathFile = $path;
             $image->thumbPathFile = $pathThumb;

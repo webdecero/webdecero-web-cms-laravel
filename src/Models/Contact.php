@@ -13,6 +13,9 @@ class Contact extends Model
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
+    protected $collection = 'webcms_contacts';
+
+
     /**
      * The attributes that are mass assignable.
      *
