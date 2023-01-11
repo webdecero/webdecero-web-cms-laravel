@@ -10,6 +10,7 @@ use Illuminate\Support\ServiceProvider;
 use Laravel\Passport\Passport;
 
 use Webdecero\Webcms\Commands\SetupAdmin;
+use Webdecero\Webcms\Commands\SetupInstall;
 use Webdecero\Webcms\Models\Passport\AuthCode;
 use Webdecero\Webcms\Models\Passport\Client;
 use Webdecero\Webcms\Models\Passport\PersonalAccessClient;
@@ -75,6 +76,7 @@ class CMSServiceProvider extends ServiceProvider {
         if ($this->app->runningInConsole()) {
             $this->commands([
                 SetupAdmin::class,
+                SetupInstall::class,
             ]);
         }
     

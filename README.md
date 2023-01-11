@@ -125,6 +125,14 @@ Add path for api-manager routes in array paths:
 'paths' => ['api-manager/*'],
 ```
 
+### Edit config file filesystems.php
+  
+Add path from Webcms disk in links array:
+
+```php
+public_path('CMS-WDC') => storage_path('app/CMS-WDC'),
+```
+
 
 ## Install Artisan Commands
 

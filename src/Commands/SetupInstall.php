@@ -3,9 +3,12 @@
 namespace Webdecero\Webcms\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 
 use Webdecero\Webcms\Models\Admin;
+use Webdecero\Webcms\Controllers\Settings\SettingsController;
+use Webdecero\Webcms\Controllers\Site\SiteController;
 
 class SetupInstall extends Command
 {
@@ -15,21 +18,22 @@ class SetupInstall extends Command
      * @var string
      */
     protected $signature = 'webcms:install';
+    protected $host = '';
 
     protected $ask =
     [
         'name' => [
-            'ask' => 'What is your name?',
+            'ask' => 'What is the name of your site?',
             'rule' => 'required|max:255|min:3'
         ],
-        'email' =>  [
-            'ask' => 'What is your email?',
-            'rule' => 'required|email|max:255|unique:Admin,email'
+        'keyName' =>  [
+            'ask' => 'Enter a keyname for your site:',
+            'rule' => 'required|max:255|min:3|alpha_dash|regex:/^[A-Za-z0-9_-]+$/m'
         ],
-        'password' => [
-            'ask' => 'What is your password?',
-            'rule' => 'required|max:25|min:6'
-        ]
+        /*'urlBase' => [
+            'ask' => "Do you want to use this base url for your site [$host]? Press enter if yes or if not enter the new base url",
+            'rule' => 'sometimes|max:25|min:6|url'
+        ]*/
     ];
 
     /**
@@ -46,6 +50,7 @@ class SetupInstall extends Command
      */
     public function __construct()
     {
+        $this->host = url('/');
         parent::__construct();
     }
 
@@ -56,19 +61,44 @@ class SetupInstall extends Command
      */
     public function handle()
     {
+        if (!Schema::hasTable('webcms_sites')) {
+            $this->info("Creating webcms_sites collection");
+            $answers = [];
+            foreach ($this->ask as $key => $ask) {
+                $answers[$key] =  $this->createAsk($key, $ask);
+            }
+            $answers['urlBase'] = $this->anticipate("Do you want to use this base url for your site [$this->host]? Press enter if yes or if not enter the new base url",
+                 [$this->host]);
 
-        $admin = new Admin;
-        foreach ($this->ask as $key => $ask) {
-            $admin->{$key} =  $this->createAsk($key, $ask);
+            if(empty($answers['urlBase'])) $answers['urlBase'] = $this->host;
+
+            $this->info("{$answers['urlBase']} is done.");
+            $this->newLine();
+            $webcms_sites = new SiteController();
+            $createSite = $webcms_sites->createSite($answers['name'], $answers['keyName'], $answers['urlBase']);
+            if($createSite){
+                $this->info("webcms_sites collection created successfully!!");
+                $this->newLine();
+            }
         }
-        $token = $admin->createToken('Laravel Password Grant Client WEBCMS')->accessToken;
-        $admin->status =  true;
-        $admin->save();
+        if (!Schema::hasTable('webcms_settings')) {
+            $this->info("Creating webcms_settings collection");
+            $webcms_settings = new SettingsController();
+            $createSettings = $webcms_settings->createSettings();
+            if($createSettings){
+                $this->info("webcms_settings collection created successfully!!");
+                $this->newLine();
+            }
+        }
 
-        $this->info("Token: {$token}");
-        // $loginRoute = "Panel ".route('manager.index');
+        /*TODO */
+        //create page and template default
 
-        // $this->info($loginRoute);
+        if (!Schema::hasTable('webcms_admin')) {
+            $this->info("Creating a new user admin");
+            $this->call('webcms:admin');
+        }
+
     }
 
     public function createAsk($key, $ask)
@@ -82,10 +112,6 @@ class SetupInstall extends Command
             if ($validator->fails()) {
                 $error = $validator->errors()->first($key);
                 $this->error($error);
-                // $errors = $validator->errors()->get($key);
-                // foreach ($errors as $key => $error) {
-                //     $this->error($error);
-                // }
             } else {
                 $this->info("{$input[$key]} is done.");
             }

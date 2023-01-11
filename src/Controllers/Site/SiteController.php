@@ -57,25 +57,25 @@ class SiteController extends Controller
         }
     }
 
-    public function createSite (Request $request) 
+    public function createSite ($name, $keyName, $urlBase) 
     {
         try {
             $settings = new Settings();
-            $settings->name = 'SiteTest';
-            $settings->urlBase = 'sitetest.com';
+            $settings->name = $name;
+            $settings->urlBase = $urlBase;
             $settings->lang = 'es';
-            $settings->robots = 'robotsTest';
+            $settings->robots = 'robots';
             $settings->favicon = 'urlImage';
 
             $seo = new Seo();
-            $seo->es = new SeoSchema('titleTest', 'description', [], 'image', 'schema');
+            $seo->es = new SeoSchema('title', 'description', [], 'image', 'schema');
             
             $css = new FrontEndFilesSchema([],'', '');
 
             $javaScript = new FrontEndFilesSchema([],'', '');
 
             $site = new Site();
-            $site->keyName = 'SiteTest';
+            $site->keyName = $keyName;
             $site->settings = $settings->toArray();
             $site->seo = $seo->toArray();
             $site->css = $css;
@@ -83,7 +83,7 @@ class SiteController extends Controller
             $site->siteMap = '';
             $site->save();
 
-            return $this->sendResponse($site, 'Configuraciones creadas');
+            return true;
         } catch (Exception $th) {
             return $this->sendError('SettingsController getSettings', $th->getMessage(), $th->getCode());
         }

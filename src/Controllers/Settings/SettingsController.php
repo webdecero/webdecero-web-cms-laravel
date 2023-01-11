@@ -28,19 +28,19 @@ class SettingsController extends Controller
         }
     }
 
-    public function createSettings (Request $request) 
+    public function createSettings () 
     {
         try {
-            $sideBar = new IdentitySchema(null, '#304156');
+            $sideBar = new IdentitySchema('manager/logos/logoWDCSidebar.png', '#304156');
 
-            $login = new IdentitySchema(null, '#2D3A4B');
+            $login = new IdentitySchema('manager/logos/logoWDCLogin.png', '#2D3A4B');
 
             $settings = new Settings();
             $settings->sideBar = $sideBar;
             $settings->login = $login;
             $settings->save();
 
-            return $this->sendResponse($settings, 'Configuraciones creadas');
+            return true;
         } catch (Exception $th) {
             return $this->sendError('SettingsController getSettings', $th->getMessage(), $th->getCode());
         }
