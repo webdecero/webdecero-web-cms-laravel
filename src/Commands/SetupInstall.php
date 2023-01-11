@@ -62,7 +62,7 @@ class SetupInstall extends Command
     public function handle()
     {
         if (!Schema::hasTable('webcms_sites')) {
-            $this->info("Creating webcms_sites collection");
+            $this->info("Creating site");
             $answers = [];
             foreach ($this->ask as $key => $ask) {
                 $answers[$key] =  $this->createAsk($key, $ask);
@@ -77,7 +77,7 @@ class SetupInstall extends Command
             $webcms_sites = new SiteController();
             $createSite = $webcms_sites->createSite($answers['name'], $answers['keyName'], $answers['urlBase']);
             if($createSite){
-                $this->info("webcms_sites collection created successfully!!");
+                $this->info("Site created successfully!!");
                 $this->newLine();
             }
         }

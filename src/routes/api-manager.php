@@ -12,6 +12,7 @@ use Webdecero\Webcms\Controllers\Manager\LoginController;
 use Webdecero\Webcms\Controllers\Manager\ContactController;
 use Webdecero\Webcms\Controllers\SiteMap\SiteMapController;
 use Webdecero\Webcms\Controllers\Utilities\FilesController;
+use Webdecero\Webcms\Controllers\Utilities\AssetsController;
 use Webdecero\Webcms\Controllers\Settings\SideBarController;
 use Webdecero\Webcms\Controllers\Settings\SettingsController;
 use Webdecero\Webcms\Controllers\Templates\TemplatesController;
@@ -62,6 +63,7 @@ Route::middleware('api')->prefix('api-manager')->group(function () {
     });
 
     Route::options('/config', [ConfigurationsController::class, 'getBaseUri'])->name('config.base');
+    Route::get('/settings/login', [LoginSController::class, 'show'])->name('settings.login');
 
     Route::middleware(['auth:admin'])->group(function () {
 
@@ -69,7 +71,6 @@ Route::middleware('api')->prefix('api-manager')->group(function () {
         //Route::get('/settings/create', [SettingsController::class, 'createSettings'])->name('settings.create');
         Route::get('/settings/side-bar', [SideBarController::class, 'show'])->name('settings.side-bar');
         Route::put('/settings/side-bar', [SideBarController::class, 'update'])->name('settings.side-bar');
-        Route::get('/settings/login', [LoginSController::class, 'show'])->name('settings.login');
         Route::put('/settings/login', [LoginSController::class, 'update'])->name('settings.login');
 
         Route::get('/site', [SiteController::class, 'getSite'])->name('site');
@@ -100,13 +101,18 @@ Route::middleware('api')->prefix('api-manager')->group(function () {
         ]]);
         
         Route::resource('/images', ImagesController::class, ['except' => [
-            'create', 'edit', 'update'
+            'create', 'edit', 'update', 'index'
         ]]);
-        Route::post('/images/{id}', [ImagesController::class, 'update'])->name('images.update');
+        Route::post('/images/search', [ImagesController::class, 'search'])->name('images.search');
         Route::post('/images/base-64', [ImagesController::class, 'uploadImageBase64'])->name('images.base64');
+        Route::post('/images/{id}', [ImagesController::class, 'update'])->name('images.update');
 
         Route::post('utilities/files/css', [FilesController::class, 'uploadFileCSS'])->name('css.upload');
         Route::post('utilities/files/js', [FilesController::class, 'uploadFileJS'])->name('js.upload');
+        Route::post('utilities/assets/upload', [AssetsController::class, 'uploadAssetsZip'])->name('assets.upload');
+        Route::post('utilities/assets/files', [AssetsController::class, 'listFiles'])->name('assets.list');
+        Route::post('utilities/assets/folder/remove', [AssetsController::class, 'removeFolder'])->name('assets.folder-remove');
+        Route::post('utilities/assets/file/remove', [AssetsController::class, 'removeFile'])->name('assets.file-remove');
 
         Route::resource('/pages', PagesController::class, ['except' => [
             'create', 'edit'
