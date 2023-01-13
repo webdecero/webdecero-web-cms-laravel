@@ -99,8 +99,6 @@ class TemplatesController extends Controller
             
             $javaScript = new FrontEndFilesSchema([],'', '');
             
-            $tools = resolve(ToolsController::class);
-            
             $template = new Template();
             $template->fill($input);
             $template->css = $css;
@@ -111,6 +109,48 @@ class TemplatesController extends Controller
             return $this->sendResponse($template, 'Template creado');
         } catch (Exception $th) {
             return $this->sendError('TemplatesController store', $th->getMessage(), $th->getCode());
+        }
+    }
+
+
+    public function createTemplates () 
+    {
+        try {
+
+            $css = new FrontEndFilesSchema([],'', '');
+            
+            $javaScript = new FrontEndFilesSchema([],'', '');
+            
+            $template = new Template();
+            $template->title = 'Header WDC';
+            $template->keyName = 'header_wdc';
+            $template->type = 'header';
+            $template->css = $css;
+            $template->javaScript = $javaScript;
+            $template->content = '';
+            $template->save();
+
+            $template = new Template();
+            $template->title = 'Main WDC';
+            $template->keyName = 'main_wdc';
+            $template->type = 'main';
+            $template->css = $css;
+            $template->javaScript = $javaScript;
+            $template->content = '';
+            $template->save();
+
+            $template = new Template();
+            $template->title = 'Footer WDC';
+            $template->keyName = 'footer_wdc';
+            $template->type = 'footer';
+            $template->css = $css;
+            $template->javaScript = $javaScript;
+            $template->content = '';
+            $template->save();
+
+            return true;
+        } catch (Exception $th) {
+            return $this->sendError('TemplatesController createTemplates', $th->getMessage(), $th->getCode());
         }
     }
 

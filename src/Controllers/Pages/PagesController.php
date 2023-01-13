@@ -75,6 +75,32 @@ class PagesController extends Controller
         }
     }
 
+    public function createPage () 
+    {
+        try {
+
+            $seo = new SeoSchema('', '', [], '', '');
+            
+            $css = new FrontEndFilesSchema([],'', '');
+
+            $javaScript = new FrontEndFilesSchema([],'', '');
+
+            $page = new Page();
+            $page->keyName = "page_wdc";
+            $page->lang = "es";
+            $page->content = "";
+            $page->temporalContent = "";
+            $page->seo = $seo;
+            $page->css = $css;
+            $page->javaScript = $javaScript;
+            $page->save();
+
+            return true;
+        } catch (Exception $th) {
+            return $this->sendError('PagesController createPage', $th->getMessage(), $th->getCode());
+        }
+    }
+
     public function update (Request $request, $keyName) 
     {
         try {

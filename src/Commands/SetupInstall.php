@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 
 use Webdecero\Webcms\Models\Admin;
-use Webdecero\Webcms\Controllers\Settings\SettingsController;
 use Webdecero\Webcms\Controllers\Site\SiteController;
+use Webdecero\Webcms\Controllers\Settings\SettingsController;
+use Webdecero\Webcms\Controllers\Pages\PagesController;
+use Webdecero\Webcms\Controllers\Templates\TemplatesController;
 
 class SetupInstall extends Command
 {
@@ -91,8 +93,25 @@ class SetupInstall extends Command
             }
         }
 
-        /*TODO */
-        //create page and template default
+        if (!Schema::hasTable('webcms_pages')) {
+            $this->info("Creating webcms_pages collection");
+            $webcms_pages = new PagesController();
+            $createPage = $webcms_pages->createPage();
+            if($createPage){
+                $this->info("webcms_pages collection created successfully!!");
+                $this->newLine();
+            }
+        }
+
+        if (!Schema::hasTable('webcms_templates')) {
+            $this->info("Creating webcms_templates collection");
+            $webcms_templates = new TemplatesController();
+            $createTemplates = $webcms_templates->createTemplates();
+            if($createTemplates){
+                $this->info("webcms_templates collection created successfully!!");
+                $this->newLine();
+            }
+        }
 
         if (!Schema::hasTable('webcms_admin')) {
             $this->info("Creating a new user admin");
