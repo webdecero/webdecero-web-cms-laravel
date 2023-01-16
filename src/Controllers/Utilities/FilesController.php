@@ -41,7 +41,7 @@ class FilesController extends Controller
 
             $path = $disk->putFileAs($folder,$file,$name);
             
-            return $this->sendResponse('CMS-WDC/'.$path, 'Se cargo correctamete el archivo js');
+            return $this->sendResponse('storage-webcms/'.$path, 'Se cargo correctamete el archivo js');
         } catch (\Throwable $th) {
             return $this->sendError('FilesController uploadFileJS', $th->getMessage(), $th->getCode());
         }
@@ -72,7 +72,7 @@ class FilesController extends Controller
 
             $path = $disk->putFileAs($folder,$file,$name);
 
-            return $this->sendResponse('CMS-WDC/'.$path, 'Se cargo correctamete el archivo css');
+            return $this->sendResponse('storage-webcms/'.$path, 'Se cargo correctamete el archivo css');
         } catch (\Throwable $th) {
             return $this->sendError('FilesController uploadFileCSS', $th->getMessage(), $th->getCode());
         }

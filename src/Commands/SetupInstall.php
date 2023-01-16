@@ -63,6 +63,20 @@ class SetupInstall extends Command
      */
     public function handle()
     {
+
+        //run command public disk webcms
+        $this->newLine();
+        $this->info("Creating public links...");
+        $this->newLine();
+        $this->call('storage:link');
+
+        //run command passport
+        $this->newLine();
+        $this->info("Installing passport...");
+        $this->newLine();
+        $this->call('passport:install');
+        $this->newLine();
+
         if (!Schema::hasTable('webcms_sites')) {
             $this->info("Creating site");
             $answers = [];
@@ -117,6 +131,10 @@ class SetupInstall extends Command
             $this->info("Creating a new user admin");
             $this->call('webcms:admin');
         }
+
+        $this->newLine();
+        $this->newLine();
+        $this->info("¡¡Installation done successfully!!");
 
     }
 

@@ -14,7 +14,7 @@
     <link
       rel="shortcut icon"
       type="image/x-icon"
-      href="CMS-WDC/uploads/assets/img/favicon.png"
+      href="storage-webcms/uploads/assets/img/favicon.png"
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,7 +29,7 @@
     @yield('css')
     <meta
         name="preloader-list"
-        content='["CMS-WDC/uploads/assets/img/riesgo-1.jpg","CMS-WDC/uploads/assets/img/riesgo-2.jpg","CMS-WDC/uploads/assets/img/riesgo-3.jpg","CMS-WDC/uploads/assets/img/riesgo-4.jpg","CMS-WDC/uploads/assets/img/riesgo-5.jpg","CMS-WDC/uploads/assets/img/riesgo-6.jpg","CMS-WDC/uploads/assets/img/consultoria1.jpg","CMS-WDC/uploads/assets/img/consultoria2.jpg"]'
+        content='["storage-webcms/uploads/assets/img/riesgo-1.jpg","storage-webcms/uploads/assets/img/riesgo-2.jpg","storage-webcms/uploads/assets/img/riesgo-3.jpg","storage-webcms/uploads/assets/img/riesgo-4.jpg","storage-webcms/uploads/assets/img/riesgo-5.jpg","storage-webcms/uploads/assets/img/riesgo-6.jpg","storage-webcms/uploads/assets/img/consultoria1.jpg","storage-webcms/uploads/assets/img/consultoria2.jpg"]'
     />
     <script type="x-shader/x-vertex" id="vertexshaderParticle">
         attribute float size;

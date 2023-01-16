@@ -23,7 +23,7 @@ class AssetsController extends Controller
         try {
             $file = $request->file('file');
 
-            $path = "CMS-WDC/uploads/chunks/{$file->getClientOriginalName()}";
+            $path = "storage-webcms/uploads/chunks/{$file->getClientOriginalName()}";
 
             $content = $file->get();
             if($content == false) throw new Exception('Error de contenido', 422);
@@ -38,7 +38,7 @@ class AssetsController extends Controller
                 if ($status !== true) throw new Exception($this->_messageZip($status).' '.$path.' '.$message, 422);
                 
                 //extract zip
-                $destinationPath = 'CMS-WDC/uploads/assets/';
+                $destinationPath = 'storage-webcms/uploads/assets/';
                 $files = [];
                 $zip->extractTo($destinationPath);
                 
@@ -69,7 +69,7 @@ class AssetsController extends Controller
                             $data['orientation'] = 'default';
                             $data['format'] = $ext;
                             $data['isPublic'] = true;
-                            $data['disk'] = 'CMS-WDC';
+                            $data['disk'] = 'webcms';
                             $data['size'] = $img->filesize();
                             $data['pathFile'] = $path;
                             $data['quality'] = 100;
@@ -233,7 +233,7 @@ class AssetsController extends Controller
     public function listFiles(Request $request)
     {
         try {
-            $root = 'CMS-WDC/uploads/assets';
+            $root = 'storage-webcms/uploads/assets';
             $path = $request->input('path', $root);
             $folder = $request->input('folder', null);
 

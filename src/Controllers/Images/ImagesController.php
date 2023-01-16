@@ -133,7 +133,7 @@ class ImagesController extends ManagerController
             $input['folder']  = $request->input('folder', 'uploads/assets/img');
             $input['quality'] = $request->input('quality', 100);
             $input['resize']  = $request->input('resize', 'widen');
-            //$input['disk']  = $request->input('disk', 'CMS-WDC');
+            //$input['disk']  = $request->input('disk', 'webcms');
 
 
             $img = InterventionImage::make($input['image']);
@@ -157,15 +157,15 @@ class ImagesController extends ManagerController
             
             
             if (empty($input['disk'])) {
-                $input['disk'] = 'CMS-WDC';
+                $input['disk'] = 'webcms';
                 $dynamicDisk = new DynamicDisk();
                 $disk = $dynamicDisk->createDisk();
 
                 $isSave = $disk->put($path, $fileData);
                 $disk->put($pathThumb, $fileDataThumbnail);
 
-                $path = 'CMS-WDC/' . $path;
-                $pathThumb = 'CMS-WDC/' . $pathThumb;
+                $path = 'storage-webcms/' . $path;
+                $pathThumb = 'storage-webcms/' . $pathThumb;
             }
             else {
                
@@ -372,15 +372,15 @@ class ImagesController extends ManagerController
 
             if (!$isSave) throw new Exception(trans('webcms::storage.notstorage'), 500);*/
             if (empty($input['disk'])) {
-                $input['disk'] = 'CMS-WDC';
+                $input['disk'] = 'webcms';
                 $dynamicDisk = new DynamicDisk();
                 $disk = $dynamicDisk->createDisk();
 
                 $isSave = $disk->put($path, $fileData);
                 $disk->put($pathThumb, $fileDataThumbnail);
 
-                $path = 'CMS-WDC/' . $path;
-                $pathThumb = 'CMS-WDC/' . $pathThumb;
+                $path = 'storage-webcms/' . $path;
+                $pathThumb = 'storage-webcms/' . $pathThumb;
             }
             else {
                

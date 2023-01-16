@@ -10,7 +10,7 @@ class DynamicDisk
     function createDisk() {
         return $disk = Storage::build([
             'driver' => 'local',
-            'root' => storage_path('app/CMS-WDC'),
+            'root' => storage_path('app/webcms'),
         ]);
     }
 

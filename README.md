@@ -119,18 +119,21 @@ Change your default database connection name in `config/auth.php`:
 ```
 ### Edit config file cors.php
   
-Add path for api-manager routes in array paths:
+Add path in array paths in file `config/cors.php`:
 
 ```php
-'paths' => ['api-manager/*'],
+'paths' => ['api-webcms/*'],
 ```
 
 ### Edit config file filesystems.php
   
-Add path from Webcms disk in links array:
+Add path from Webcms disk in links array in file `config/filesystems.php`:
 
 ```php
-public_path('CMS-WDC') => storage_path('app/CMS-WDC'),
+'links' => [
+        public_path('storage') => storage_path('app/public'),
+        public_path('storage-webcms') => storage_path('app/webcms'),
+    ],
 ```
 
 

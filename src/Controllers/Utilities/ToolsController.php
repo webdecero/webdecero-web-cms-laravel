@@ -35,7 +35,7 @@ class ToolsController extends Controller
         $path = $this->getPath($name, $folder, $type);
         $isSave = $disk->put($path, $content);
         if (!$isSave) throw new \Exception('No storage', 500);
-        return 'CMS-WDC/'.$path;
+        return 'storage-webcms/'.$path;
         
     }
 
@@ -55,7 +55,7 @@ class ToolsController extends Controller
         $dynamicDisk = new DynamicDisk();
         $disk = $dynamicDisk->createDisk();
 
-        $path = str_replace('CMS-WDC/', '', $path);
+        $path = str_replace('storage-webcms/', '', $path);
 
         $disk->delete($path);
         
