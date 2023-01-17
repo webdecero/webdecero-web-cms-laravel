@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 
 use Webdecero\Webcms\Models\Admin;
+use Webdecero\Webcms\Models\Site\Seo;
+use Webdecero\Webcms\Schemas\SeoSchema;
+use Webdecero\Webcms\Schemas\SettingsSchema;
+use Webdecero\Webcms\Schemas\IdentitySchema;
+use Webdecero\Webcms\Schemas\FrontEndFilesSchema;
 use Webdecero\Webcms\Controllers\Site\SiteController;
 use Webdecero\Webcms\Controllers\Settings\SettingsController;
 use Webdecero\Webcms\Controllers\Pages\PagesController;
@@ -91,7 +96,14 @@ class SetupInstall extends Command
             $this->info("{$answers['urlBase']} is done.");
             $this->newLine();
             $webcms_sites = new SiteController();
-            $createSite = $webcms_sites->createSite($answers['name'], $answers['keyName'], $answers['urlBase']);
+
+            $seo = new Seo();
+            $seo->es = new SeoSchema('title', 'description', [], 'image', 'schema');
+            $settings = new SettingsSchema($answers['name'], $answers['urlBase'], 'es', 'robots', 'pathFavicon');
+            $css = new FrontEndFilesSchema([],'', '');
+            $javaScript = new FrontEndFilesSchema([],'', '');
+
+            $createSite = $webcms_sites->createSite($answers['keyName'], $seo, $settings, $css, $javaScript);
             if($createSite){
                 $this->info("Site created successfully!!");
                 $this->newLine();
@@ -100,7 +112,11 @@ class SetupInstall extends Command
         if (!Schema::hasTable('webcms_settings')) {
             $this->info("Creating webcms_settings collection");
             $webcms_settings = new SettingsController();
-            $createSettings = $webcms_settings->createSettings();
+            
+            $sideBar = new IdentitySchema('manager/logos/logoWDCSidebar.png', '#304156');
+            $login = new IdentitySchema('manager/logos/logoWDCLogin.png', '#2D3A4B');
+
+            $createSettings = $webcms_settings->createSettings($sideBar, $login);
             if($createSettings){
                 $this->info("webcms_settings collection created successfully!!");
                 $this->newLine();
@@ -110,7 +126,12 @@ class SetupInstall extends Command
         if (!Schema::hasTable('webcms_pages')) {
             $this->info("Creating webcms_pages collection");
             $webcms_pages = new PagesController();
-            $createPage = $webcms_pages->createPage();
+
+            $seo = new SeoSchema('', '', [], '', '');
+            $css = new FrontEndFilesSchema([],'', '');
+            $javaScript = new FrontEndFilesSchema([],'', '');
+
+            $createPage = $webcms_pages->createPage($seo, $css, $javaScript);
             if($createPage){
                 $this->info("webcms_pages collection created successfully!!");
                 $this->newLine();

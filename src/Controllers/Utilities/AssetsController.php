@@ -8,6 +8,7 @@ use Validator;
 use ZipArchive;
 use Illuminate\Http\Request;
 use Webdecero\Webcms\Models\Image;
+use Webdecero\Webcms\Disk\DynamicDisk;
 use Webdecero\Webcms\Traits\ResponseApi;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -23,10 +24,17 @@ class AssetsController extends Controller
         try {
             $file = $request->file('file');
 
-            $path = "storage-webcms/uploads/chunks/{$file->getClientOriginalName()}";
-
+            $path = "uploads/chunks/{$file->getClientOriginalName()}";
+            Log::info($path);
             $content = $file->get();
             if($content == false) throw new Exception('Error de contenido', 422);
+
+            $dynamicDisk = new DynamicDisk();
+            $disk = $dynamicDisk->createDisk();
+            $isSave = $disk->put($path, '');
+            if (!$isSave) throw new \Exception('No storage', 500);
+            $path = 'storage-webcms/'.$path;
+
             \File::append($path, $content);
 
             if ($request->has('is_last') && $request->boolean('is_last')) {
@@ -233,7 +241,7 @@ class AssetsController extends Controller
     public function listFiles(Request $request)
     {
         try {
-            $root = 'storage-webcms/uploads/assets';
+            $root = 'webcms/uploads/assets';
             $path = $request->input('path', $root);
             $folder = $request->input('folder', null);
 

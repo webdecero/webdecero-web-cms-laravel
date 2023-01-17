@@ -6,11 +6,11 @@ use Exception;
 use Throwable;
 use Validator;
 use Illuminate\Http\Request;
-use Webdecero\Webcms\Models\Settings\Settings;
+use Illuminate\Support\Facades\Log;
 use Webdecero\Webcms\Traits\ResponseApi;
 use Webdecero\Webcms\Schemas\IdentitySchema;
-use Illuminate\Support\Facades\Log;
 use Webdecero\Webcms\Controllers\Controller;
+use Webdecero\Webcms\Models\Settings\Settings;
 
 class SettingsController extends Controller
 {
@@ -28,13 +28,10 @@ class SettingsController extends Controller
         }
     }
 
-    public function createSettings () 
+    public function createSettings (IdentitySchema $sideBar, IdentitySchema $login) 
     {
         try {
-            $sideBar = new IdentitySchema('manager/logos/logoWDCSidebar.png', '#304156');
-
-            $login = new IdentitySchema('manager/logos/logoWDCLogin.png', '#2D3A4B');
-
+            
             $settings = new Settings();
             $settings->sideBar = $sideBar;
             $settings->login = $login;

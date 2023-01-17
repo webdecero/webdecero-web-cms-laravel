@@ -22,7 +22,7 @@ use Webdecero\Webcms\Models\Passport\ClientCommand;
 
 class CMSServiceProvider extends ServiceProvider {
 
-    private $configCMS = __DIR__ . '/../config/webdecero/cms/config.php';
+    private $configCMS = __DIR__ . '/../config/webdecero/webcms.php';
     private $configCMSManager = __DIR__ . '/../Manager';
     private $configViews = __DIR__ . '/resources/views';
     private $configHtaccess = __DIR__ . '/../.htaccess';
@@ -62,7 +62,7 @@ class CMSServiceProvider extends ServiceProvider {
      */
     public function register() {
 
-        $this->mergeConfigFrom($this->configCMS, 'webdecero/cms/config.php');
+        $this->mergeConfigFrom($this->configCMS, 'webdecero/webcms.php');
 
         Passport::ignoreMigrations();
 
@@ -88,7 +88,7 @@ class CMSServiceProvider extends ServiceProvider {
 //        php artisan vendor:publish --provider="Webdecero\Webcms\CMSServiceProvider" --tag=config
 
         $this->publishes([
-            $this->configCMS => config_path('webdecero/cms/config.php')
+            $this->configCMS => config_path('webdecero/webcms.php')
                 ], 'config');
     }
         

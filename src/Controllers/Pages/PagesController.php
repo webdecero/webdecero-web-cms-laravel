@@ -5,18 +5,22 @@ namespace Webdecero\Webcms\Controllers\Pages;
 use Exception;
 use Throwable;
 use Validator;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Webdecero\Webcms\Models\Pages\Page;
 use Webdecero\Webcms\Schemas\SeoSchema;
-use Illuminate\Http\Request;
 use Webdecero\Webcms\Traits\ResponseApi;
-use Illuminate\Support\Facades\Log;
-use Webdecero\Webcms\Schemas\FrontEndFilesSchema;
 use Webdecero\Webcms\Controllers\Controller;
+use Webdecero\Webcms\Schemas\FrontEndFilesSchema;
 use Webdecero\Webcms\Controllers\Utilities\ToolsController;
 
 class PagesController extends Controller
 {
     use ResponseApi;
+
+    private $_keyName = "page_wdc";
+    private $_lang = "es";
+    private $_content = "";
 
     public function index (Request $request) 
     {
@@ -75,21 +79,15 @@ class PagesController extends Controller
         }
     }
 
-    public function createPage () 
+    public function createPage (SeoSchema $seo, FrontEndFilesSchema $css, FrontEndFilesSchema $javaScript) 
     {
         try {
 
-            $seo = new SeoSchema('', '', [], '', '');
-            
-            $css = new FrontEndFilesSchema([],'', '');
-
-            $javaScript = new FrontEndFilesSchema([],'', '');
-
             $page = new Page();
-            $page->keyName = "page_wdc";
-            $page->lang = "es";
-            $page->content = "";
-            $page->temporalContent = "";
+            $page->keyName = $this->_keyName;
+            $page->lang = $this->_lang;
+            $page->content = $this->_content;
+            $page->temporalContent = $this->_content;
             $page->seo = $seo;
             $page->css = $css;
             $page->javaScript = $javaScript;

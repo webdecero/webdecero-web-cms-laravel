@@ -5,15 +5,15 @@ namespace Webdecero\Webcms\Controllers\Site;
 use Exception;
 use Throwable;
 use Validator;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Webdecero\Webcms\Models\Site\Seo;
 use Webdecero\Webcms\Models\Site\Site;
 use Webdecero\Webcms\Schemas\SeoSchema;
-use Illuminate\Http\Request;
-use Webdecero\Webcms\Models\Site\Settings;
 use Webdecero\Webcms\Traits\ResponseApi;
-use Illuminate\Support\Facades\Log;
-use Webdecero\Webcms\Schemas\FrontEndFilesSchema;
 use Webdecero\Webcms\Controllers\Controller;
+use Webdecero\Webcms\Schemas\SettingsSchema;
+use Webdecero\Webcms\Schemas\FrontEndFilesSchema;
 use Webdecero\Webcms\Controllers\Utilities\ToolsController;
 
 class SiteController extends Controller
@@ -57,26 +57,13 @@ class SiteController extends Controller
         }
     }
 
-    public function createSite ($name, $keyName, $urlBase) 
+    public function createSite (String $keyName, Seo $seo,SettingsSchema $settings, FrontEndFilesSchema $css, FrontEndFilesSchema $javaScript) 
     {
         try {
-            $settings = new Settings();
-            $settings->name = $name;
-            $settings->urlBase = $urlBase;
-            $settings->lang = 'es';
-            $settings->robots = 'robots';
-            $settings->favicon = 'urlImage';
-
-            $seo = new Seo();
-            $seo->es = new SeoSchema('title', 'description', [], 'image', 'schema');
-            
-            $css = new FrontEndFilesSchema([],'', '');
-
-            $javaScript = new FrontEndFilesSchema([],'', '');
 
             $site = new Site();
             $site->keyName = $keyName;
-            $site->settings = $settings->toArray();
+            $site->settings = $settings;
             $site->seo = $seo->toArray();
             $site->css = $css;
             $site->javaScript = $javaScript;
@@ -85,7 +72,7 @@ class SiteController extends Controller
 
             return true;
         } catch (Exception $th) {
-            return $this->sendError('SettingsController getSettings', $th->getMessage(), $th->getCode());
+            return $this->sendError('SettingsController createSite', $th->getMessage(), $th->getCode());
         }
     }
 
