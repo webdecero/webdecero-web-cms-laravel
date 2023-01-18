@@ -169,7 +169,7 @@
 
             axios({
                 method: 'post',
-                url: '/api-manager/images/base-64',
+                url: '/api-webcms/images/base-64',
                 data: {
                     name: name,
                     thumbName: 'thumb-' + name,

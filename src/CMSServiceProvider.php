@@ -23,7 +23,7 @@ use Webdecero\Webcms\Models\Passport\ClientCommand;
 class CMSServiceProvider extends ServiceProvider {
 
     private $configCMS = __DIR__ . '/../config/webdecero/webcms.php';
-    private $configCMSManager = __DIR__ . '/../Manager';
+    private $configCMSManager = __DIR__ . '/../Webcms';
     private $configViews = __DIR__ . '/resources/views';
     private $configHtaccess = __DIR__ . '/../.htaccess';
 
@@ -94,7 +94,7 @@ class CMSServiceProvider extends ServiceProvider {
         
     private function bootRoutes() {
 
-        $this->loadRoutesFrom(__DIR__ . '/routes/api-manager.php');
+        $this->loadRoutesFrom(__DIR__ . '/routes/api-webcms.php');
 
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
         
@@ -108,7 +108,7 @@ class CMSServiceProvider extends ServiceProvider {
 
     private function bootAssets() {
         $this->publishes([
-            $this->configCMSManager => public_path('manager'),
+            $this->configCMSManager => public_path('webcms'),
         ], 'public');
     }
 }

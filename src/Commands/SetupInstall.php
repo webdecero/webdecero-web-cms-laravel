@@ -113,8 +113,8 @@ class SetupInstall extends Command
             $this->info("Creating webcms_settings collection");
             $webcms_settings = new SettingsController();
             
-            $sideBar = new IdentitySchema('manager/logos/logoWDCSidebar.png', '#304156');
-            $login = new IdentitySchema('manager/logos/logoWDCLogin.png', '#2D3A4B');
+            $sideBar = new IdentitySchema('webcms/logos/logoWDCSidebar.png', '#304156');
+            $login = new IdentitySchema('webcms/logos/logoWDCLogin.png', '#2D3A4B');
 
             $createSettings = $webcms_settings->createSettings($sideBar, $login);
             if($createSettings){
@@ -141,7 +141,11 @@ class SetupInstall extends Command
         if (!Schema::hasTable('webcms_templates')) {
             $this->info("Creating webcms_templates collection");
             $webcms_templates = new TemplatesController();
-            $createTemplates = $webcms_templates->createTemplates();
+
+            $css = new FrontEndFilesSchema([],'', '');
+            $javaScript = new FrontEndFilesSchema([],'', '');
+
+            $createTemplates = $webcms_templates->createTemplates($css, $javaScript);
             if($createTemplates){
                 $this->info("webcms_templates collection created successfully!!");
                 $this->newLine();

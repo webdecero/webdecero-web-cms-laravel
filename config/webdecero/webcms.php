@@ -6,6 +6,4 @@ return [
         ["value"=> "en", "label"=> "Ingles"],
     ],
     'langSelected' => 'es',
-    'baseUrl'=> '',
-    'baseApi'=> ''
 ];

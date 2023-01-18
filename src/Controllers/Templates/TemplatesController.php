@@ -19,6 +19,22 @@ class TemplatesController extends Controller
 {
     use ResponseApi;
 
+    private $_titleH = 'Header WDC';
+    private $_keyNameH = "header_wdc";
+    private $_typeH = "header";
+
+    private $_titleM = 'Main WDC';
+    private $_keyNameM = "main_wdc";
+    private $_typeM = "main";
+
+    private $_titleF = 'Footer WDC';
+    private $_keyNameF = "footer_wdc";
+    private $_typeF = "footer";
+
+    private $_content = "";
+
+
+
     public function search (Request $request, $type) 
     {
         try {
@@ -113,39 +129,35 @@ class TemplatesController extends Controller
     }
 
 
-    public function createTemplates () 
+    public function createTemplates (FrontEndFilesSchema $css, FrontEndFilesSchema $javaScript) 
     {
         try {
-
-            $css = new FrontEndFilesSchema([],'', '');
-            
-            $javaScript = new FrontEndFilesSchema([],'', '');
             
             $template = new Template();
-            $template->title = 'Header WDC';
-            $template->keyName = 'header_wdc';
-            $template->type = 'header';
+            $template->title = $this->_titleH;
+            $template->keyName = $this->_keyNameH;
+            $template->type = $this->_typeH;
             $template->css = $css;
             $template->javaScript = $javaScript;
-            $template->content = '';
+            $template->content = $this->_content;
             $template->save();
 
             $template = new Template();
-            $template->title = 'Main WDC';
-            $template->keyName = 'main_wdc';
-            $template->type = 'main';
+            $template->title = $this->_titleM;
+            $template->keyName = $this->_keyNameM;
+            $template->type = $this->_typeM;
             $template->css = $css;
             $template->javaScript = $javaScript;
-            $template->content = '';
+            $template->content = $this->_content;
             $template->save();
 
             $template = new Template();
-            $template->title = 'Footer WDC';
-            $template->keyName = 'footer_wdc';
-            $template->type = 'footer';
+            $template->title = $this->_titleF;
+            $template->keyName = $this->_keyNameF;
+            $template->type = $this->_typeF;
             $template->css = $css;
             $template->javaScript = $javaScript;
-            $template->content = '';
+            $template->content = $this->_content;
             $template->save();
 
             return true;
