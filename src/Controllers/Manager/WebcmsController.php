@@ -3,7 +3,6 @@
 namespace Webdecero\Webcms\Controllers\Manager;
 
 use Illuminate\Support\Facades\Log;
-use Webdecero\Webcms\Models\Site\Site;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -42,17 +41,13 @@ class WebcmsController extends BaseController
     }
 
     public function home() {
-        $site = Site::first();
-        $settings = $site->settings;
-
-        $data['title'] = $settings['name'];
-        $data['host'] = $settings['urlBase'].'/webcms';
+        $host = url('/');
+        $data['host'] = $host.'/webcms/';
         $config = $this->webcmsConfig;
-        $config['baseUrl'] = $settings['urlBase'].'/';
-        $config['baseApi'] = $settings['urlBase'].'/api-webcms/';
+        $config['baseUrl'] = $host.'/';
+        $config['baseApi'] = $host.'/api-webcms/';
         $data['config'] = json_encode($config); 
 
-        $data['storagePath'] = url('/');  
         return view('manager.index', $data);
     }
 }
