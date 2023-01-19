@@ -108,7 +108,7 @@ class CMSServiceProvider extends ServiceProvider {
 
     private function bootAssets() {
         $this->publishes([
-            $this->configCMSManager => public_path('webcms'),
-        ], 'public');
+            $this->configCMSManager => storage_path('app/webcms/manager'),
+        ], 'manager');
     }
 }

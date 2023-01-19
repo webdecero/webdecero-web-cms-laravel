@@ -128,6 +128,7 @@ Add path in array paths in file `config/cors.php`:
 ### Edit config file filesystems.php
   
 Add path from Webcms disk in links array in file `config/filesystems.php`:
+*It is important not to modify the disk path for the webcms because it will affect its proper functioning.*
 
 ```php
 'links' => [

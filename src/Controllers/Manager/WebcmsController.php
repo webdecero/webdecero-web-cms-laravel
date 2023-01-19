@@ -46,13 +46,13 @@ class WebcmsController extends BaseController
         $settings = $site->settings;
 
         $data['title'] = $settings['name'];
-        $data['host'] = $settings['urlBase'];
+        $data['host'] = $settings['urlBase'].'/webcms';
         $config = $this->webcmsConfig;
         $config['baseUrl'] = $settings['urlBase'].'/';
         $config['baseApi'] = $settings['urlBase'].'/api-webcms/';
         $data['config'] = json_encode($config); 
 
-        //$data['host'] = url('/');
+        $data['storagePath'] = url('/');  
         return view('manager.index', $data);
     }
 }

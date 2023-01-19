@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Webdecero\Webcms\Controllers\MailController;
+//use Webdecero\Webcms\Controllers\MailController;
 use Webdecero\Webcms\Controllers\RouterController;
 use Webdecero\Webcms\Controllers\Manager\WebcmsController;
 use Webdecero\Webcms\Controllers\Manager\Contentbuiler\ContentBuilderController;
@@ -22,16 +22,16 @@ use Webdecero\Webcms\Controllers\Manager\Contentbuiler\ContentBuilderController;
 // Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => ['web','setGuard:web','localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
 
 Route::middleware('web')->group(function () {
-    Route::get('web-cms', [WebcmsController::class, 'home'])->name('manage.home');
+    Route::get('webcms', [WebcmsController::class, 'home'])->name('webcms.home');
     Route::prefix('webcms')->group(function () {
-        Route::get('/editor/header/{keyName}', [ContentBuilderController::class, 'viewEditorHeader'])->name('manage.editor.header');
-        Route::get('/editor/template/{keyName}', [ContentBuilderController::class, 'viewEditorMain'])->name('manage.editor.template');
-        Route::get('/editor/footer/{keyName}', [ContentBuilderController::class, 'viewEditorFooter'])->name('manage.editor.footer');
-        Route::get('/editor/pages/{lang}/{keyName}', [ContentBuilderController::class, 'viewEditorPages'])->name('manage.editor.pages');
+        Route::get('/editor/header/{keyName}', [ContentBuilderController::class, 'viewEditorHeader'])->name('webcms.editor.header');
+        Route::get('/editor/template/{keyName}', [ContentBuilderController::class, 'viewEditorMain'])->name('webcms.editor.template');
+        Route::get('/editor/footer/{keyName}', [ContentBuilderController::class, 'viewEditorFooter'])->name('webcms.editor.footer');
+        Route::get('/editor/pages/{lang}/{keyName}', [ContentBuilderController::class, 'viewEditorPages'])->name('webcms.editor.pages');
         Route::get('/{any}',[WebcmsController::class,'home'])->where('any', '.*');
     });
 
-    Route::post('/notification/contact', [MailController::class, 'sendNotificationContact'])->name('notification.contact');
+    //Route::post('/notification/contact', [MailController::class, 'sendNotificationContact'])->name('notification.contact');
     Route::get('{any}',[RouterController::class,'catch'])->where('any', '.*');
 });
 
