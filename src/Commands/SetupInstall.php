@@ -113,8 +113,8 @@ class SetupInstall extends Command
             $this->info("Creating webcms_settings collection");
             $webcms_settings = new SettingsController();
             
-            $sideBar = new IdentitySchema('webcms/logos/logoWDCSidebar.png', '#304156');
-            $login = new IdentitySchema('webcms/logos/logoWDCLogin.png', '#2D3A4B');
+            $sideBar = new IdentitySchema('storage-webcms/manager/logos/logoWDCSidebar.png', '#304156');
+            $login = new IdentitySchema('storage-webcms/manager/logos/logoWDCLogin.png', '#2D3A4B');
 
             $createSettings = $webcms_settings->createSettings($sideBar, $login);
             if($createSettings){
