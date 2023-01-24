@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-//use Webdecero\Webcms\Controllers\MailController;
 use Webdecero\Webcms\Controllers\RouterController;
 use Webdecero\Webcms\Controllers\Manager\WebcmsController;
 use Webdecero\Webcms\Controllers\Manager\Contentbuiler\ContentBuilderController;
@@ -31,7 +30,6 @@ Route::middleware('web')->group(function () {
         Route::get('/{any}',[WebcmsController::class,'home'])->where('any', '.*');
     });
 
-    //Route::post('/notification/contact', [MailController::class, 'sendNotificationContact'])->name('notification.contact');
     Route::get('{any}',[RouterController::class,'catch'])->where('any', '.*');
 });
 

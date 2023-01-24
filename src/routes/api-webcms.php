@@ -9,7 +9,6 @@ use Webdecero\Webcms\Controllers\Manager\AdminController;
 
 use Webdecero\Webcms\Controllers\Manager\LoginController;
 
-use Webdecero\Webcms\Controllers\Manager\ContactController;
 use Webdecero\Webcms\Controllers\SiteMap\SiteMapController;
 use Webdecero\Webcms\Controllers\Utilities\FilesController;
 use Webdecero\Webcms\Controllers\Utilities\AssetsController;
@@ -164,10 +163,6 @@ Route::middleware('api')->prefix('api-webcms')->group(function () {
         Route::resource("/admin", AdminController::class, ['except' => [
             'create', 'edit', 'index'
         ]])->names('admin');
-
-
-        Route::post('/contact/search', [ContactController::class, 'search'])->name('admin.contact.search');
-
 
     });
 });
