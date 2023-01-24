@@ -121,6 +121,7 @@ class ContentBuilderController extends Controller
 
         $data['content'] = $template->content;
 
+        //dd( asset('storage-webcms/manager/contentbuilder/contentbuilder.min.js'));
         return view(
             'manager.editor.template.header',
             $data

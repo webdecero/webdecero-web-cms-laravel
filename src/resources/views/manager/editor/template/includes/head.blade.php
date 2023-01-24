@@ -11,18 +11,18 @@
 
     <base href="{{url('/')}}">
 
-    <link href="{{ asset('manager/assets/minimalist-blocks/content.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('manager/contentbuilder/contentbuilder.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('storage-webcms/manager/assets/minimalist-blocks/content.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('storage-webcms/manager/contentbuilder/contentbuilder.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- These includes will enable snippet slider (using Glide slider) -->
-    <link href="{{ asset('manager/assets/scripts/glide/css/glide.core.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('manager/assets/scripts/glide/css/glide.theme.css')}}" rel="stylesheet" type="text/css" />
-    <script src="{{ asset('manager/assets/scripts/glide/glide.js')}}" type="text/javascript"></script>
+    <link href="{{ asset('storage-webcms/manager/assets/scripts/glide/css/glide.core.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('storage-webcms/manager/assets/scripts/glide/css/glide.theme.css')}}" rel="stylesheet" type="text/css" />
+    <script src="{{ asset('storage-webcms/manager/assets/scripts/glide/glide.js')}}" type="text/javascript"></script>
 
     <!-- These includes will enable snippet slider (using Glide slider) -->
-    <link href="{{ asset('manager/assets/scripts/glide/css/glide.core.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('manager/assets/scripts/glide/css/glide.theme.css')}}" rel="stylesheet" type="text/css" />
-    <script src="{{ asset('manager/assets/scripts/glide/glide.js')}}" type="text/javascript"></script>
+    <link href="{{ asset('storage-webcms/manager/assets/scripts/glide/css/glide.core.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('storage-webcms/manager/assets/scripts/glide/css/glide.theme.css')}}" rel="stylesheet" type="text/css" />
+    <script src="{{ asset('storage-webcms/manager/assets/scripts/glide/glide.js')}}" type="text/javascript"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
