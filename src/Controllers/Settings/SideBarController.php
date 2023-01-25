@@ -43,7 +43,7 @@ class SideBarController extends Controller
         try {
             $input = $request->all();
             $rules = [
-                'logo' => 'string',
+                'logo' => 'required|string',
                 'color' => 'required|string'
             ];
             $validator = Validator::make($input, $rules);

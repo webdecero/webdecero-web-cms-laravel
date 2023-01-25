@@ -42,8 +42,8 @@ class LoginController extends Controller
         try {
             $input = $request->all();
             $rules = array(
-                'logo' => 'string',
-                'color' => 'string'
+                'logo' => 'string|required',
+                'color' => 'string|required'
             );
             $validator = Validator::make($input, $rules);
             if ($validator->fails()) return $this->sendError('Error de validación', $validator->errors()->all(), 422);
