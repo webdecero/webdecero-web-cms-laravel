@@ -93,65 +93,7 @@ class AssetsController extends Controller
             }
 
             return $this->sendResponse(true, 'Archivo cargado al servidor');
-            /*$input = $request->all();
-            $files = [];
-
-            $rules = array(
-                'zip' => 'required|file|mimes:zip'
-            );
-
-            $validator = Validator::make($input, $rules);
-            if ($validator->fails()) return $this->sendError('Validator', $validator->errors()->all(), 422);
-
-            $zip = new ZipArchive();
-            $status = $zip->open($request->file("zip")->getRealPath());
-
-            if ($status !== true) throw new Exception('Corrupted file', 422);;
-
-            $destinationPath = 'CMS-WDC/uploads/assets/';
             
-            $zip->extractTo($destinationPath);
-            
-            for ($i = 0; $i < $zip->numFiles; $i++) {
-                $filename = $zip->getNameIndex($i);
-                array_push($files, $filename);
-            }
-            
-            $zip->close();
-
-            dispatch(function () use ($files, $destinationPath) {
-                foreach ($files as $file) {
-                    $ext = pathinfo($file, PATHINFO_EXTENSION);
-                    if($ext == 'jpg' || $ext == 'png' || $ext == 'jpeg') {
-                        $path = $destinationPath.$file;
-                        $img = InterventionImage::make($path);
-                        $data = [];
-                        $name = pathinfo($file, PATHINFO_FILENAME );
-                        $data['name'] = $name;
-                        $data['originalName'] = $name.'.'.$ext;
-                        $data['alt'] = 'Image Asset';
-                        $data['title'] = 'Image';
-                        $data['extension'] = $img->mime();
-                        $data['width'] = $img->width();
-                        $data['height'] = $img->height();
-                        $data['orientation'] = 'default';
-                        $data['format'] = $ext;
-                        $data['isPublic'] = true;
-                        $data['disk'] = 'CMS-WDC';
-                        $data['size'] = $img->filesize();
-                        $data['pathFile'] = $path;
-                        $data['quality'] = 100;
-                        $data['folder'] = 'uploads/assets/'.pathinfo($file, PATHINFO_DIRNAME);
-
-                        $image = Image::where('originalName', $data['originalName'])->first();
-                        if(empty($image)) $image = new Image();
-                        $image->fill($data);
-                        $image->save();
-                    }
-                }
-             })->afterResponse();
-            
-            return $this->sendResponse(true, 'Archivo cargado al servidor');*/
         } catch (\Exception $th) {
             return $this->sendError('AssetsController uploadAssetsZip', $th->getMessage(), $th->getCode());
         }

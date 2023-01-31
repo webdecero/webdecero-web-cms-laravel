@@ -15,34 +15,6 @@ class ContentBuilderController extends Controller
 {
     use ResponseApi;
 
-    /**
-     * viewEditor muestra la vita del editor de content builder js
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function viewEditor($id)
-    {
-        $template = Template::find($id);
-
-        // $templateHeader =
-
-        $site = Site::whereNotNull('name')->first();
-
-        $this->data['style'] = $site['globalCSS'];
-
-        $this->data['js'] = $site['globalJavaScript'];
-
-
-        $this->data['template'] = $template['content'];
-
-        // dd($this->data['js']);
-        return view(
-            'contentBuilder.editor',
-            $this->data
-        );
-    }
-
     public function viewEditorFooter($keyName) {
 
         $template = Template::where('keyName', $keyName)->first();
