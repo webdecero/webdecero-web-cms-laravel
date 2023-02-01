@@ -25,7 +25,6 @@ class AssetsController extends Controller
             $file = $request->file('file');
 
             $path = "uploads/chunks/{$file->getClientOriginalName()}";
-            Log::info($path);
             $content = $file->get();
             if($content == false) throw new Exception('Error de contenido', 422);
 

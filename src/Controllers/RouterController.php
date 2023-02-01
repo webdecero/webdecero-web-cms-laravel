@@ -2,6 +2,7 @@
 
 namespace Webdecero\Webcms\Controllers;
 
+use Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Webdecero\Webcms\Models\Site\Site;
@@ -25,31 +26,57 @@ class RouterController extends Controller
     public function catch(Request $request)
     {
         try {
-            
-            $lang = App::currentLocale();
-            $siteMap = SiteMap::where('lang', $lang)->first();
-
+            $isLang = false;
             $uri = $request->getPathInfo();
+
+            //obtiene idioma
+            //$lang = App::currentLocale();
+            $lang = Session::get('locale');
+
+            //si esta vacio por defecto pone el español
+            if(empty($lang)) $lang = 'es';
+
+            //Host redirige a español
+            if  ($uri == '/') {
+                return redirect('/'.$lang);
+            }
+
+            //Divide url
             $urls = explode("/", $uri);
             unset($urls[0]);
-            
-            if(!empty($siteMap)) {
-                $pageNode = $this->_searchNode($siteMap, $urls);
-                if(!empty($pageNode)) return $this->_loadPage($pageNode);
+
+            //verifica que el primer elemento del array sea el idioma
+            $langs = SiteMap::select('lang')->groupBy('lang')->get();
+            foreach($langs as $langR) {
+                if($urls[1] == $langR->lang) $isLang = true;
             }
-            
-            $siteMaps = SiteMap::where('lang','!=',$lang)->get();
-            
-            foreach($siteMaps as $siteMap) {
-                $pageNode = $this->_searchNode($siteMap, $urls);
-                if(!empty($pageNode)) {
-                    App::setLocale($siteMap->lang);
-                    return $this->_loadPage($pageNode);
-                }
+
+            //toma el idioma de la cookie y regirige con idioma
+            if(!$isLang) {
+                //agrega idioma a la url
+                array_unshift($urls, $lang);
+                //une la url con separador
+                $uri = implode("/",$urls);
+                //redirige
+                return redirect($uri);
             }
-            
+            //buscar sitemap del idioma
+            $siteMap = SiteMap::where('lang', $urls[1])->first();
+
+            //saca idioma del array
+            unset($urls[1]);
+            //agrega path raiz
+            array_unshift($urls,"/");
+
+            $pageNode = $this->_searchNode($siteMap, $urls);
+            if(!empty($pageNode)) {
+                //Log::info("message");
+                //App::setLocale($siteMap->lang);
+                Session::put('locale', $siteMap->lang);
+                return $this->_loadPage($pageNode);
+            }
+
             return view('errors.404');
-            
 
         } catch (\Throwable $th) {
             //Log::info($th);
@@ -65,7 +92,7 @@ class RouterController extends Controller
             $pageNode = $this->_searchMap($map, $url);
 
             if(empty($pageNode)) return null;
-            
+
             $map = !empty($pageNode['children']) ? $pageNode['children'] : [];
         }
 
@@ -73,7 +100,7 @@ class RouterController extends Controller
     }
 
     private function _searchMap($map, $slug){
-        
+
         foreach($map as $page) {
             if ($page['slug'] == $slug) {
                 return $page;
@@ -117,13 +144,14 @@ class RouterController extends Controller
             $data['javaScriptCustomTemplateHeader'] = $templateHeader->javaScript['custom'];
             $data['javaScriptCustomTemplateFooter'] = $templateFooter->javaScript['custom'];
 
-            $content = empty($page->content) ? $templateMain->content : $page->content ;
-
             //CONTENT
-            $data['content'] = $templateHeader->content . $content . $templateFooter->content;
+            $data['content'] = $templateHeader->content . $templateMain->content . $templateFooter->content;
 
             //Body class
             $data['bodyClass'] = $pageNode['slug'];
+
+            //Class
+            $data['class'] = $pageNode['clase'];
 
             return view(
                 'manager.page.generic_page',
