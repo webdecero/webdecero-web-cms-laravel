@@ -1,0 +1,372 @@
+{
+	"info": {
+		"_postman_id": "848318f6-ea27-4ae5-ac5b-388f93c1c61a",
+		"name": "Webcms",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Settings",
+			"item": [
+				{
+					"name": "Index settings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlApiCMS}}/settings",
+							"host": [
+								"{{baseUrlApiCMS}}"
+							],
+							"path": [
+								"settings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Index side-bar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlApiCMS}}/settings/side-bar",
+							"host": [
+								"{{baseUrlApiCMS}}"
+							],
+							"path": [
+								"settings",
+								"side-bar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Index login",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlApiCMS}}/settings/login",
+							"host": [
+								"{{baseUrlApiCMS}}"
+							],
+							"path": [
+								"settings",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update side-bar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlApiCMS}}/settings/side-bar",
+							"host": [
+								"{{baseUrlApiCMS}}"
+							],
+							"path": [
+								"settings",
+								"side-bar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update login",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlApiCMS}}/settings/login",
+							"host": [
+								"{{baseUrlApiCMS}}"
+							],
+							"path": [
+								"settings",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Site",
+			"item": [
+				{
+					"name": "JS",
+					"item": [
+						{
+							"name": "Index site js",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlApiCMS}}/site/javascript",
+									"host": [
+										"{{baseUrlApiCMS}}"
+									],
+									"path": [
+										"site",
+										"javascript"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Index site",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlApiCMS}}/site",
+							"host": [
+								"{{baseUrlApiCMS}}"
+							],
+							"path": [
+								"site"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show site keyname",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlApiCMS}}/site/keyname",
+							"host": [
+								"{{baseUrlApiCMS}}"
+							],
+							"path": [
+								"site",
+								"keyname"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show site seo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlApiCMS}}/site/seo",
+							"host": [
+								"{{baseUrlApiCMS}}"
+							],
+							"path": [
+								"site",
+								"seo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store site seo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlApiCMS}}/site/seo",
+							"host": [
+								"{{baseUrlApiCMS}}"
+							],
+							"path": [
+								"site",
+								"seo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Destroy site seo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlApiCMS}}/site/seo/es",
+							"host": [
+								"{{baseUrlApiCMS}}"
+							],
+							"path": [
+								"site",
+								"seo",
+								"es"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show site seo lang",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlApiCMS}}/site/seo/es",
+							"host": [
+								"{{baseUrlApiCMS}}"
+							],
+							"path": [
+								"site",
+								"seo",
+								"es"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update site seo lang",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlApiCMS}}/site/seo/es",
+							"host": [
+								"{{baseUrlApiCMS}}"
+							],
+							"path": [
+								"site",
+								"seo",
+								"es"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Index site settings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlApiCMS}}/site/settings",
+							"host": [
+								"{{baseUrlApiCMS}}"
+							],
+							"path": [
+								"site",
+								"settings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update site settings",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlApiCMS}}/site/settings",
+							"host": [
+								"{{baseUrlApiCMS}}"
+							],
+							"path": [
+								"site",
+								"settings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "uriel@webdecero.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrlApiCMS}}/login",
+					"host": [
+						"{{baseUrlApiCMS}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI2M2NmZmI3MTc3NDg3NTQ5YmQzZWI1ZjIiLCJqdGkiOiI1M2YzZjEzODlkM2I5ODE1MDEyY2M4MmI4NDNhMmE3ZjJiNzZmMWQyYmMwMTMyMzFmNjJiZGM3MGI0N2M1OTNiMmU0OWQ1ZmZmNDUzNzk3NiIsImlhdCI6MTY3NDU4MDU3NywibmJmIjoxNjc0NTgwNTc3LCJleHAiOjE2NzUxODUzNzcsInN1YiI6IjYzYzcyN2FkMTg2NDRlMzU1YjFlYzFjYyIsInNjb3BlcyI6WyIqIl19.PJ118m3CFYdpCvlE82iX70G6KW_DlMSZu8hGGnlKt1v3XFVjP5F0fNhlFmMDMGnTqPMFRpCGTduWf3LDDMyMAGXSLRpX1bm-6T9LxEHwYYAwCftam90WGlfDfCW4ST9HqObkU8AFd2oBO7BhoR3B-oTzOjeuzdcWGdYMVlxIyE48RDospSQgiSTMXxLEshKtdC42ZxCQmgYgZ8nAPCq5oQhc9SRJTzY3WUH48sLDnmgUTjq18nS0O_Vzw15y7fq0oriFix_OivWWhspn70axPRsR3QGqRUpJHo6S4Rbmkf4wzAuVqyz7QS_qa1AidqQMtxObi8vt8tojgMqFq34bicoGdhrt7L14U2UxwBf-PPGVBDSUjZReZS6Z1X4AVhJ3nfCnEgRnCCpDXP1cc6yM43nUoKjRaIp6NLA-UAmGB_Ue3Hp32fztCkPOc-JzpOA47amcL_Cpv3JRFE52uuO-6QRhN1SoJilGiQe2oQM_HC-AQQG5rzCMcMWI8E0ecL8lMLvVFnxL568_nrjR7oIKfjrJrqEit_-M3CDzmAg6IUGMgwA0gwVNfkRDEVKpwvaPWPBXd2L8f1EOHZco3VyWBgG0taE0uUaR0PMe9xEs6L9UpLCI_VjsnHMZJhnn772al-0zFj6Sjxt-f_fO3RaKB1nvEXstuAKnGD62IHsah08",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://converto-cms.webdecero.dev",
+			"type": "default"
+		},
+		{
+			"key": "baseUrlApiCMS",
+			"value": "https://converto-cms.webdecero.dev/api-webcms",
+			"type": "default"
+		}
+	]
+}
